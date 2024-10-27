@@ -42,3 +42,23 @@ pub fn sublist_pattern_matching<T: PartialEq>(first_list: &[T], second_list: &[T
         _ => Comparison::Unequal,
     }
 }
+
+pub fn sublist<T: PartialEq>(first_list: &[T], second_list: &[T]) -> Comparison {
+    if first_list == second_list {
+        Comparison::Equal
+    } else if second_list.is_empty()
+        || first_list
+            .windows(second_list.len())
+            .any(|window| window == second_list)
+    {
+        Comparison::Superlist
+    } else if first_list.is_empty()
+        || second_list
+            .windows(first_list.len())
+            .any(|window| window == first_list)
+    {
+        Comparison::Sublist
+    } else {
+        Comparison::Unequal
+    }
+}
