@@ -27,3 +27,9 @@ Your task is to write methods that return the highest score from the list, the l
 ### Based on
 
 Tribute to the eighties' arcade game Frogger
+
+### verification
+
+```sh
+cargo test && cargo fmt --all -- --check
+```
