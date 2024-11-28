@@ -55,3 +55,9 @@ Consider the advantages and disadvantages of the following possibilities:
 ### Based on
 
 A subset of the Problem 8 at Project Euler - https://projecteuler.net/problem=8
+
+### Verification
+
+```sh
+cargo test && cargo fmt --all -- --check
+```
