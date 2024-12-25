@@ -105,3 +105,9 @@ Wikipedia - https://en.wikipedia.org/wiki/Binary_search_algorithm
 ```sh
 cargo test && cargo fmt --all -- --check
 ```
+
+include generic tests as decribed above:
+
+```sh
+cargo test --features generic && cargo fmt --all -- --check
+```
