@@ -10,8 +10,8 @@ impl School {
     // initializes empty BTreeMap and HashSet
     pub fn new() -> School {
         School {
-            students_per_grade: BTreeMap::new(),
-            students: HashSet::new(),
+            students_per_grade: BTreeMap::new(), // Initialize empty BTreeMap
+            students: HashSet::new(),            // Initialize empty HashSet
         }
     }
 
@@ -26,6 +26,7 @@ impl School {
             .entry(grade)
             .or_default()
             .push(student); // Add student to the grade
+        self.students_per_grade.get_mut(&grade).unwrap().sort(); // Sort the student names
     }
 
     // Get a list of all grades with students
