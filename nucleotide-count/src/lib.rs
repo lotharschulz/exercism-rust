@@ -5,12 +5,13 @@ pub fn count(nucleotide: char, dna: &str) -> Result<usize, char> {
     if !"ACGT".contains(nucleotide) {
         return Err(nucleotide);
     }
-    // Check if the DNA string contains only valid nucleotides
-    if !dna.chars().all(|c| "ACGT".contains(c)) {
-        return Err(dna.chars().find(|&c| !"ACGT".contains(c)).unwrap());
+    // Get the nucleotide counts
+    let counts = nucleotide_counts(dna)?;
+    // Return the count for the specified nucleotide
+    match counts.get(&nucleotide) {
+        Some(&count) => Ok(count),
+        None => Err(nucleotide),
     }
-    // Count the occurrences of the nucleotide in the DNA string
-    Ok(dna.chars().filter(|&c| c == nucleotide).count())
 }
 
 pub fn nucleotide_counts(dna: &str) -> Result<HashMap<char, usize>, char> {
@@ -24,7 +25,9 @@ pub fn nucleotide_counts(dna: &str) -> Result<HashMap<char, usize>, char> {
         if !"ACGT".contains(c) {
             return Err(c);
         }
-        *counts.get_mut(&c).unwrap() += 1;
+        if let Some(count) = counts.get_mut(&c) {
+            *count += 1;
+        }
     }
     Ok(counts)
 }
