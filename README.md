@@ -14,3 +14,7 @@ Make also sure that all tests in 'tests' folder are active - no tests ignored. I
 ```
 
 created all changes for [df4e27c](https://github.com/lotharschulz/exercism-rust/commit/df4e27c10cff8a3e650e3c853c51bf72b58b65b0) that pass all tests.
+
+#### model: Gemini 2.0 Flash (Preview)
+
+So far I could not come up with a prompt that can producs a similar implementation as GPT 4o above.
