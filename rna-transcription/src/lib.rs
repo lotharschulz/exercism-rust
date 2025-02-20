@@ -22,15 +22,17 @@ impl Dna {
     }
 
     pub fn into_rna(self) -> Rna {
-        let rna_sequence: String = self.sequence.chars().map(|nucleotide| {
-            match nucleotide {
+        let rna_sequence: String = self
+            .sequence
+            .chars()
+            .map(|nucleotide| match nucleotide {
                 'G' => 'C',
                 'C' => 'G',
                 'T' => 'A',
                 'A' => 'U',
                 _ => unreachable!(),
-            }
-        }).collect();
+            })
+            .collect();
         Rna {
             sequence: rna_sequence,
         }
