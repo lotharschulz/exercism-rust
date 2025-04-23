@@ -81,4 +81,4 @@ In case tests fail, adapt the implementation.
 ```
 
 This best setup I found so far with Gemini 2.0 Flash created an implementation, however the tests did not pass.
-(implementation (https://github.com/lotharschulz/exercism-rust/commit/cc2dc3e70a70fe45799161249a93c0a1ca552b99) doen with Claude 3.7)
+(implementation (https://github.com/lotharschulz/exercism-rust/commit/cc2dc3e70a70fe45799161249a93c0a1ca552b99) done with Claude 3.7)
