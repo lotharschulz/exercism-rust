@@ -54,11 +54,11 @@ impl<T> SimpleLinkedList<T> {
     pub fn rev(self) -> SimpleLinkedList<T> {
         let mut result = SimpleLinkedList::new();
         let mut current = self;
-        
+
         while let Some(value) = current.pop() {
             result.push(value);
         }
-        
+
         result
     }
 }
@@ -87,6 +87,7 @@ impl<T> FromIterator<T> for SimpleLinkedList<T> {
 impl<T> From<SimpleLinkedList<T>> for Vec<T> {
     fn from(mut linked_list: SimpleLinkedList<T>) -> Vec<T> {
         let mut vec = Vec::with_capacity(linked_list.len());
+
         while let Some(item) = linked_list.pop() {
             vec.push(item);
         }

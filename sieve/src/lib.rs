@@ -7,11 +7,11 @@ pub fn primes_up_to(upper_bound: u64) -> Vec<u64> {
     // Create a vector to track which numbers are prime
     // Initially assume all numbers from 2 to upper_bound are prime
     let mut is_prime = vec![true; (upper_bound + 1) as usize];
-    
+
     // 0 and 1 are not prime
     is_prime[0] = false;
     is_prime[1] = false;
-    
+
     // Apply the Sieve of Eratosthenes algorithm
     // For each number from 2 to sqrt(upper_bound)
     let sqrt_bound = (upper_bound as f64).sqrt() as u64 + 1;
@@ -25,7 +25,7 @@ pub fn primes_up_to(upper_bound: u64) -> Vec<u64> {
             }
         }
     }
-    
+
     // Collect all the prime numbers into a Vec
     (2..=upper_bound)
         .filter(|&i| is_prime[i as usize])
