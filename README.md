@@ -41,7 +41,7 @@ In case tests fail, adapt the implementation.
 
 created all changes for [b091d88](https://github.com/lotharschulz/exercism-rust/commit/b091d88b74cd2a18fc4e581422726b29263bb286) that passes all tests.
 
-#### model: Claude 3.7 Sonnet
+#### models: Claude 3.7 Sonnet & Claude 3.7 Sonnet Thinking
 
 ##### Context 
 - `sieve.rs` test file 
@@ -58,4 +58,6 @@ Make sure all tests in the 'tests' folder pass successfully.
 In case tests fail, adapt the implementation.
 ```
 
-This setup created all changes for [7cfd77c](https://github.com/lotharschulz/exercism-rust/commit/7cfd77cd51645e1bfe96fae48ed026856678ab46) that passes all tests.
+This setup with Claude 3.7 Sonnet created all changes for [7cfd77c](https://github.com/lotharschulz/exercism-rust/commit/7cfd77cd51645e1bfe96fae48ed026856678ab46) that passes all tests.
+
+This setup with Claude 3.7 Sonnet Thinking created all changes for [4d45abe](https://github.com/lotharschulz/exercism-rust/commit/4d45abee64e399763c8b6d23b355ddf996d9872b) that passes all tests.
