@@ -5,7 +5,7 @@ I use this also to experiment with prompts to solve the tasks
 
 ## [copilot edits](https://code.visualstudio.com/docs/copilot/copilot-edits)
 
-#### model: GPT 4o
+### model: GPT 4o
 
 ##### Context
 
@@ -21,7 +21,7 @@ When implementing make sure all tests in 'tests' folder pass succesfully.
 
 This setup created all changes for [df4e27c](https://github.com/lotharschulz/exercism-rust/commit/df4e27c10cff8a3e650e3c853c51bf72b58b65b0) that passes all tests.
 
-#### model: Claude 3.5 Sonnet (Preview)
+### model: Claude 3.5 Sonnet (Preview)
 
 The following prompt with the folder and lib.rs added to the context:
 
@@ -41,7 +41,7 @@ In case tests fail, adapt the implementation.
 
 created all changes for [b091d88](https://github.com/lotharschulz/exercism-rust/commit/b091d88b74cd2a18fc4e581422726b29263bb286) that passes all tests.
 
-#### models: Claude 3.7 Sonnet & Claude 3.7 Sonnet Thinking
+### models: Claude 3.7 Sonnet & Claude 3.7 Sonnet Thinking
 
 ##### Context 
 - `xxx.rs` test file 
@@ -62,7 +62,7 @@ This setup with Claude 3.7 Sonnet created all changes for [7cfd77c](https://gith
 
 This setup with Claude 3.7 Sonnet Thinking created all changes for [4d45abe](https://github.com/lotharschulz/exercism-rust/commit/4d45abee64e399763c8b6d23b355ddf996d9872b) that passes all tests.
 
-#### model: Gemini 2.0 Flash
+### model: Gemini 2.0 Flash - NOT WORKING so far
 
 ##### Context 
 - `xxx.rs` test file 
