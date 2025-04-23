@@ -23,7 +23,7 @@ This setup created all changes for [df4e27c](https://github.com/lotharschulz/exe
 
 #### model: Claude 3.5 Sonnet (Preview)
 
-The following prompt with the folder and libr.rs added to the context:
+The following prompt with the folder and lib.rs added to the context:
 
 ##### Context
 
@@ -33,8 +33,8 @@ The following prompt with the folder and libr.rs added to the context:
 
 ```
 Ensure all tests in the 'tests' folder are active and none are ignored. 
-Implement the TODOs in 'src/libr.rs'. 
-After the implementation of the TODOs 'src/libr.rs', run the tests in the 'tests' folder.
+Implement the TODOs in 'src/lib.rs'. 
+After the implementation of the TODOs 'src/lib.rs', run the tests in the 'tests' folder.
 Make sure all tests in the 'tests' folder pass successfully. 
 In case tests fail, adapt the implementation.
 ```
@@ -44,16 +44,16 @@ created all changes for [b091d88](https://github.com/lotharschulz/exercism-rust/
 #### models: Claude 3.7 Sonnet & Claude 3.7 Sonnet Thinking
 
 ##### Context 
-- `sieve.rs` test file 
+- `xxx.rs` test file 
    and 
-- `libr.rs` task file:
+- `lib.rs` task file
 
 ##### Prompt
 
 ```
 Ensure all tests in the 'tests' folder are active and none are ignored. 
-Implement the TODOs in 'src/libr.rs'. 
-After the implementation of the TODOs 'src/libr.rs', run the tests in the 'tests' folder.
+Implement the TODOs in 'src/lib.rs'. 
+After the implementation of the TODOs 'src/lib.rs', run the tests in the 'tests' folder.
 Make sure all tests in the 'tests' folder pass successfully. 
 In case tests fail, adapt the implementation.
 ```
@@ -61,3 +61,24 @@ In case tests fail, adapt the implementation.
 This setup with Claude 3.7 Sonnet created all changes for [7cfd77c](https://github.com/lotharschulz/exercism-rust/commit/7cfd77cd51645e1bfe96fae48ed026856678ab46) that passes all tests.
 
 This setup with Claude 3.7 Sonnet Thinking created all changes for [4d45abe](https://github.com/lotharschulz/exercism-rust/commit/4d45abee64e399763c8b6d23b355ddf996d9872b) that passes all tests.
+
+#### model: Gemini 2.0 Flash
+
+##### Context 
+- `xxx.rs` test file 
+- `lib.rs` task file
+- the source folder
+
+##### Prompt
+
+```
+Perform all changes in the src/lib.rs and 'tests' folder.
+Ensure all tests in the 'tests' folder are active and none are ignored. 
+Implement the TODOs in 'src/lib.rs'. 
+After the implementation of the TODOs 'src/lib.rs', run the tests in the 'tests' folder.
+Make sure all tests in the 'tests' folder pass successfully. 
+In case tests fail, adapt the implementation.
+```
+
+This best setup I found so far with Gemini 2.0 Flash created an implementation, however the tests did not pass.
+(implementation (https://github.com/lotharschulz/exercism-rust/commit/cc2dc3e70a70fe45799161249a93c0a1ca552b99) doen with Claude 3.7)
