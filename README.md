@@ -7,8 +7,11 @@ I use this also to experiment with prompts to solve the tasks
 
 #### model: GPT 4o
 
-Context: `lib.rs`
-Prompt:
+##### Context
+
+ `lib.rs`
+
+##### Prompt
 
 ```
 Make also sure that all tests in 'tests' folder are active - no tests ignored. 
@@ -22,8 +25,11 @@ This setup created all changes for [df4e27c](https://github.com/lotharschulz/exe
 
 The following prompt with the folder and libr.rs added to the context:
 
-Context: `lib.rs` plus the whole exercism task folder 
-Prompt:
+##### Context
+
+`lib.rs` plus the whole exercism task folder 
+
+##### Prompt
 
 ```
 Ensure all tests in the 'tests' folder are active and none are ignored. 
@@ -33,4 +39,23 @@ Make sure all tests in the 'tests' folder pass successfully.
 In case tests fail, adapt the implementation.
 ```
 
-This setup created all changes for [b091d88](https://github.com/lotharschulz/exercism-rust/commit/b091d88b74cd2a18fc4e581422726b29263bb286) that passes all tests.
+created all changes for [b091d88](https://github.com/lotharschulz/exercism-rust/commit/b091d88b74cd2a18fc4e581422726b29263bb286) that passes all tests.
+
+#### model: Claude 3.7 Sonnet
+
+##### Context 
+- `sieve.rs` test file 
+   and 
+- `libr.rs` task file:
+
+##### Prompt
+
+```
+Ensure all tests in the 'tests' folder are active and none are ignored. 
+Implement the TODOs in 'src/libr.rs'. 
+After the implementation of the TODOs 'src/libr.rs', run the tests in the 'tests' folder.
+Make sure all tests in the 'tests' folder pass successfully. 
+In case tests fail, adapt the implementation.
+```
+
+This setup created all changes for [7cfd77c](https://github.com/lotharschulz/exercism-rust/commit/7cfd77cd51645e1bfe96fae48ed026856678ab46) that passes all tests.
