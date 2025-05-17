@@ -4,26 +4,74 @@ pub enum Bucket {
     Two,
 }
 
-/// A struct to hold your results in.
 #[derive(PartialEq, Eq, Debug)]
 pub struct BucketStats {
-    /// The total number of "moves" it should take to reach the desired number of liters, including
-    /// the first fill.
     pub moves: u8,
-    /// Which bucket should end up with the desired number of liters? (Either "one" or "two")
     pub goal_bucket: Bucket,
-    /// How many liters are left in the other bucket?
     pub other_bucket: u8,
 }
 
-/// Solve the bucket problem
 pub fn solve(
     capacity_1: u8,
     capacity_2: u8,
     goal: u8,
     start_bucket: &Bucket,
 ) -> Option<BucketStats> {
-    todo!(
-        "Given one bucket of capacity {capacity_1}, another of capacity {capacity_2}, starting with {start_bucket:?}, find pours to reach {goal}, or None if impossible"
-    );
+    if (capacity_2 - capacity_1) % goal != 0 && capacity_1 != goal && capacity_2 != goal {
+        return None;
+    }
+
+    let mut c1_bucket = Bucket::One;
+    let mut c2_bucket = Bucket::Two;
+    let (mut c1_max, mut c2_max) = (capacity_1, capacity_2);
+    if *start_bucket == Bucket::Two {
+        c1_bucket = Bucket::Two;
+        c2_bucket = Bucket::One;
+        (c1_max, c2_max) = (capacity_2, capacity_1);
+    }
+    let (mut c1, mut c2) = (0, 0);
+    let mut moves = 0;
+    loop {
+        if c1 == goal {
+            return Some(BucketStats {
+                moves,
+                goal_bucket: c1_bucket,
+                other_bucket: c2,
+            });
+        }
+        if c2 == goal {
+            return Some(BucketStats {
+                moves,
+                goal_bucket: c2_bucket,
+                other_bucket: c1,
+            });
+        }
+
+        if c2 == c2_max {
+            c2 = 0;
+            moves += 1;
+            continue;
+        }
+
+        if c1 == 0 {
+            c1 = c1_max;
+            moves += 1;
+            if c2_max == goal {
+                c2 = c2_max;
+                moves += 1;
+            }
+            continue;
+        }
+        if c1 > 0 && c2 < c2_max {
+            if (c2_max - c2) >= c1 {
+                c2 += c1;
+                c1 = 0;
+            } else {
+                c1 = c1 - (c2_max - c2);
+                c2 = c2_max;
+            }
+            moves += 1;
+            continue;
+        }
+    }
 }
