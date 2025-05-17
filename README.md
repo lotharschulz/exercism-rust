@@ -72,9 +72,9 @@ This setup with Claude 3.7 Sonnet Thinking created all changes for [4d45abe](htt
 ##### Prompt
 
 ```
-Perform all changes in the src/lib.rs and 'tests' folder.
-Ensure all tests in the 'tests' folder are active and none are ignored. 
-Implement the TODOs in 'src/lib.rs'. 
+Implement the TODOs in 'src/lib.rs'.
+Ensure all tests in the 'tests' folder are enabled. Execute all the tests and in case tests fail, adapt the TODOs implementation.
+
 After the implementation of the TODOs 'src/lib.rs', run the tests in the 'tests' folder.
 Make sure all tests in the 'tests' folder pass successfully. 
 In case tests fail, adapt the implementation.
