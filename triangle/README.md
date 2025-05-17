@@ -93,5 +93,5 @@ The Ruby Koans triangle project, parts 1 & 2 - https://web.archive.org/web/20220
 ### Verification
 
 ```sh
-cargo test && cargo fmt --all -- --check
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check
 ```
