@@ -24,6 +24,29 @@ In case tests fail, adapt the implementation and continue with running tests and
 This setup created all changes for [044f6c3](https://github.com/lotharschulz/exercism-rust/commit/044f6c3640b75a14d3108f3160a1150f5c1c1a19) that passes all tests.
 
 
+### model: Claude 3.7 Sonnet
+
+##### Context
+
+- exercism exercise folder
+
+##### Prompt
+
+```
+Implement all TODOs in 'src/lib.rs'.
+Ensure all tests in the 'tests' folder are NOT ignored and enabled. 
+After the implementation of the all TODOs in 'src/lib.rs', run the tests in the 'tests' folder.
+Make sure all tests in the 'tests' folder pass successfully.
+
+Run test like so "cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check"
+
+In case tests fail, adapt the implementation and continue with running tests and subsequent code implementation in case tests fail until all tests pass.
+```
+
+This setup created all changes for [987c7cc](https://github.com/lotharschulz/exercism-rust/commit/987c7ccf03b71a029a5ae2389c2cb97f57f859b5) that passes all tests and resulted in formatted code.
+
+
+
 ## [copilot edits](https://code.visualstudio.com/docs/copilot/copilot-edits)
 
 ### model: GPT 4o
