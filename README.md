@@ -3,6 +3,27 @@
 
 I use this also to experiment with prompts to solve the tasks
 
+## [copilot agent mode](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/)
+
+### model: GPT 4.1
+
+##### Context
+
+- exercism exercise folder
+
+##### Prompt
+
+```
+Implement all TODOs in 'src/lib.rs'.
+Ensure all tests in the 'tests' folder are NOT ignored and enabled. 
+After the implementation of the all TODOs in 'src/lib.rs', run the tests in the 'tests' folder.
+Make sure all tests in the 'tests' folder pass successfully. 
+In case tests fail, adapt the implementation and continue with running tests and subsequent code implementation in case tests fail until all tests pass.
+```
+
+This setup created all changes for [044f6c3](https://github.com/lotharschulz/exercism-rust/commit/044f6c3640b75a14d3108f3160a1150f5c1c1a19) that passes all tests.
+
+
 ## [copilot edits](https://code.visualstudio.com/docs/copilot/copilot-edits)
 
 ### model: GPT 4o
@@ -72,9 +93,9 @@ This setup with Claude 3.7 Sonnet Thinking created all changes for [4d45abe](htt
 ##### Prompt
 
 ```
-Implement the TODOs in 'src/lib.rs'.
-Ensure all tests in the 'tests' folder are enabled. Execute all the tests and in case tests fail, adapt the TODOs implementation.
-
+Perform all changes in the src/lib.rs and 'tests' folder.
+Ensure all tests in the 'tests' folder are active and none are ignored. 
+Implement the TODOs in 'src/lib.rs'. 
 After the implementation of the TODOs 'src/lib.rs', run the tests in the 'tests' folder.
 Make sure all tests in the 'tests' folder pass successfully. 
 In case tests fail, adapt the implementation.
