@@ -74,3 +74,10 @@ Written with <3 at [Fullstack Academy][fullstack] by Lindsay Levine.
 ### Based on
 
 Water Pouring Problem - https://demonstrations.wolfram.com/WaterPouringProblem/
+
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check
+```
