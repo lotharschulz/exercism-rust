@@ -28,7 +28,10 @@ impl Robot {
             Direction::South => Direction::West,
             Direction::West => Direction::North,
         };
-        Robot { d: new_direction, ..self }
+        Robot {
+            d: new_direction,
+            ..self
+        }
     }
 
     #[must_use]
@@ -39,7 +42,10 @@ impl Robot {
             Direction::South => Direction::East,
             Direction::East => Direction::North,
         };
-        Robot { d: new_direction, ..self }
+        Robot {
+            d: new_direction,
+            ..self
+        }
     }
 
     #[must_use]
@@ -51,7 +57,11 @@ impl Robot {
             Direction::South => new_y -= 1,
             Direction::West => new_x -= 1,
         }
-        Robot { x: new_x, y: new_y, ..self }
+        Robot {
+            x: new_x,
+            y: new_y,
+            ..self
+        }
     }
 
     #[must_use]
