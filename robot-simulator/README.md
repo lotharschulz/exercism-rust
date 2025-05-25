@@ -54,3 +54,9 @@ The robot then receives a number of instructions, at which point the testing fac
 ### Based on
 
 Inspired by an interview question at a famous company.
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check
+```
