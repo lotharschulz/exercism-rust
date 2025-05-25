@@ -1,7 +1,6 @@
-[My](https://exercism.io/profiles/lotharschulz) [exercism rust](https://exercism.org/tracks/rust/exercises/) track Solutions
+## [My](https://exercism.io/profiles/lotharschulz) [exercism rust](https://exercism.org/tracks/rust/exercises/) track solutions
 
-
-I use this also to experiment with prompts to solve the tasks
+I use this repository also to experiment with AI/LLM prompts to solve the exercises.
 
 ## [copilot agent mode](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/)
 
