@@ -1,4 +1,4 @@
-[My](https://exercism.io/profiles/lotharschulz) [exercism rust](https://exercism.org/tracks/rust/exercises/) track Solutions
+[My](https://exercism.io/profiles/lotharschulz) [exercism rust](https://exercism.org/tracks/rust/exercises/) track solutions
 
 
 I use this also to experiment with prompts to solve the tasks
