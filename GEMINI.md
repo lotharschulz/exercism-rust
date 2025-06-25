@@ -1,4 +1,3 @@
-```md
 have_fun: false
 code_review_config:
   enabled: true
@@ -11,4 +10,3 @@ code_review_config:
     summary: true
     code_review: true
   ignore_patterns: [.lock, .DS_Store, .git, .github, .idea, .vscode, .settings, .project, .classpath, .rs.bk, target, .exercism]
-```
