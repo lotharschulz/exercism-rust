@@ -75,7 +75,6 @@ Written with <3 at [Fullstack Academy][fullstack] by Lindsay Levine.
 
 Water Pouring Problem - https://demonstrations.wolfram.com/WaterPouringProblem/
 
-
 ### Verification
 
 ```sh
