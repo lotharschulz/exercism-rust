@@ -2,6 +2,10 @@
 
 I use this repository also to experiment with AI/LLM prompts to solve the exercises.
 
+## [Gemini CLI](https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/)
+
+A terminal coding assitant that can solve exercism exercises: [https://www.lotharschulz.info/2025/06/25/getting-started-with-google-gemini-cli-complete-setup-guide-and-rust-testing-experience/](https://www.lotharschulz.info/2025/06/25/getting-started-with-google-gemini-cli-complete-setup-guide-and-rust-testing-experience/) 
+
 ## [copilot agent mode](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/)
 
 ### model: GPT 4.1
