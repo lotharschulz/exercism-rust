@@ -1,29 +1,35 @@
-pub fn translate(rna: &str) -> Option<Vec<&str>> {
-    let mut proteins = Vec::new();
-    let codons = rna.as_bytes().chunks(3);
+#[derive(Debug, PartialEq)]
+pub enum TranslationError {
+    InvalidCodon,
+    IncompleteSequence,
+}
 
-    for codon_bytes in codons {
-        let codon = match std::str::from_utf8(codon_bytes) {
-            Ok(c) => c,
-            Err(_) => return None,
-        };
-
-        if codon.len() != 3 {
-            return None;
-        }
-
-        match codon {
-            "AUG" => proteins.push("Methionine"),
-            "UUU" | "UUC" => proteins.push("Phenylalanine"),
-            "UUA" | "UUG" => proteins.push("Leucine"),
-            "UCU" | "UCC" | "UCA" | "UCG" => proteins.push("Serine"),
-            "UAU" | "UAC" => proteins.push("Tyrosine"),
-            "UGU" | "UGC" => proteins.push("Cysteine"),
-            "UGG" => proteins.push("Tryptophan"),
-            "UAA" | "UAG" | "UGA" => return Some(proteins),
-            _ => return None,
-        }
+fn protein_from_codon(codon: &str) -> Result<Option<&str>, TranslationError> {
+    match codon {
+        "AUG" => Ok(Some("Methionine")),
+        "UUU" | "UUC" => Ok(Some("Phenylalanine")),
+        "UUA" | "UUG" => Ok(Some("Leucine")),
+        "UCU" | "UCC" | "UCA" | "UCG" => Ok(Some("Serine")),
+        "UAU" | "UAC" => Ok(Some("Tyrosine")),
+        "UGU" | "UGC" => Ok(Some("Cysteine")),
+        "UGG" => Ok(Some("Tryptophan")),
+        "UAA" | "UAG" | "UGA" => Ok(None), // STOP codon
+        _ => Err(TranslationError::InvalidCodon),
     }
+}
 
-    Some(proteins)
+pub fn translate(rna: &str) -> Result<Vec<&str>, TranslationError> {
+    rna.as_bytes()
+        .chunks(3)
+        .map(|codon_bytes| {
+            if codon_bytes.len() != 3 {
+                return Err(TranslationError::IncompleteSequence);
+            }
+            std::str::from_utf8(codon_bytes)
+                .map_err(|_| TranslationError::InvalidCodon)
+                .and_then(protein_from_codon)
+        })
+        .take_while(|res| res.as_ref().map(|opt| opt.is_some()).unwrap_or(true))
+        .filter_map(|res| res.transpose())
+        .collect()
 }
