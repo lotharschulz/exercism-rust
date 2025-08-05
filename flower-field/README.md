@@ -80,3 +80,8 @@ Can you complete the challenge without cloning the input?
 ```sh
 cargo test && cargo fmt --all -- --check
 ```
+
+fix formatting issues in case these apply
+```sh
+cargo fmt --all
+```
