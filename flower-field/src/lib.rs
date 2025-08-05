@@ -1,55 +1,54 @@
 pub fn annotate(garden: &[&str]) -> Vec<String> {
-    if garden.is_empty() {
-        return vec![];
+    garden
+        .iter()
+        .enumerate()
+        .map(|(row, &row_str)| annotate_row(garden, row, row_str))
+        .collect()
+}
+
+fn annotate_row(garden: &[&str], row: usize, row_str: &str) -> String {
+    row_str
+        .as_bytes()
+        .iter()
+        .enumerate()
+        .map(|(col, &byte)| annotate_cell(garden, row, col, byte as char))
+        .collect()
+}
+
+fn annotate_cell(garden: &[&str], row: usize, col: usize, cell: char) -> char {
+    match cell {
+        '*' => '*',
+        _ => count_adjacent_flowers(garden, row, col)
+            .map_or(' ', |count| char::from_digit(count, 10).unwrap()),
     }
+}
 
-    let rows = garden.len();
-    let cols = if rows > 0 { garden[0].len() } else { 0 };
+fn count_adjacent_flowers(garden: &[&str], row: usize, col: usize) -> Option<u32> {
+    let count = get_neighbors(row, col)
+        .into_iter()
+        .filter_map(|(nr, nc)| get_cell_at(garden, nr, nc))
+        .filter(|&cell| cell == '*')
+        .count() as u32;
 
-    let mut result = Vec::with_capacity(rows);
+    (count > 0).then_some(count)
+}
 
-    for row in 0..rows {
-        let mut row_string = String::with_capacity(cols);
+fn get_neighbors(row: usize, col: usize) -> Vec<(i32, i32)> {
+    (-1..=1)
+        .flat_map(|dr| (-1..=1).map(move |dc| (dr, dc)))
+        .filter(|&(dr, dc)| !(dr == 0 && dc == 0))
+        .map(|(dr, dc)| (row as i32 + dr, col as i32 + dc))
+        .collect()
+}
 
-        for col in 0..cols {
-            let current_char = garden[row].as_bytes()[col] as char;
-
-            if current_char == '*' {
-                row_string.push('*');
-            } else {
-                // Count adjacent flowers
-                let mut count = 0;
-
-                // Check all 8 directions: up, up-right, right, down-right, down, down-left, left, up-left
-                for dr in -1i32..=1 {
-                    for dc in -1i32..=1 {
-                        if dr == 0 && dc == 0 {
-                            continue; // Skip the current cell
-                        }
-
-                        let nr = row as i32 + dr;
-                        let nc = col as i32 + dc;
-
-                        // Check bounds
-                        if nr >= 0 && nr < rows as i32 && nc >= 0 && nc < cols as i32 {
-                            let neighbor_char = garden[nr as usize].as_bytes()[nc as usize] as char;
-                            if neighbor_char == '*' {
-                                count += 1;
-                            }
-                        }
-                    }
-                }
-
-                if count == 0 {
-                    row_string.push(' ');
-                } else {
-                    row_string.push(char::from_digit(count, 10).unwrap());
-                }
-            }
-        }
-
-        result.push(row_string);
+fn get_cell_at(garden: &[&str], row: i32, col: i32) -> Option<char> {
+    if row >= 0 && col >= 0 {
+        garden
+            .get(row as usize)?
+            .as_bytes()
+            .get(col as usize)
+            .map(|&byte| byte as char)
+    } else {
+        None
     }
-
-    result
 }
