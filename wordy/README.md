@@ -98,3 +98,9 @@ $ cargo test --features exponentials
 ### Based on
 
 Inspired by one of the generated questions in the Extreme Startup game. - https://github.com/rchatley/extreme_startup
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check
+```
