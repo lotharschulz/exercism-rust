@@ -102,5 +102,5 @@ Inspired by one of the generated questions in the Extreme Startup game. - https:
 ### Verification
 
 ```sh
-cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
 ```
