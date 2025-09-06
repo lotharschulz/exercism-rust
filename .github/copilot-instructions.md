@@ -1,13 +1,14 @@
 # Exercism Rust Track Solutions
 
-This repository contains solutions to Rust exercises from the Exercism programming platform. It serves as both a learning resource and experimentation ground for AI/LLM prompts to solve coding exercises.
+This repository contains solutions to Rust exercises from the Exercism programming platform. 
+It serves as both a learning resource and experimentation ground for AI/LLM prompts to solve coding exercises.
 
 Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
 
 ## Working Effectively
 
 ### Repository Structure
-- 65 individual Rust exercise directories (e.g., `hello-world`, `bowling`, `alphametics`)
+- multiple individual Rust exercise directories (e.g., `hello-world`, `bowling`, `alphametics`)
 - Each exercise contains:
   - `src/lib.rs` - Main implementation file (may contain `todo!()` macros to implement)
   - `tests/` - Test files (some tests may be `#[ignore]` and need to be enabled)
@@ -50,7 +51,7 @@ for dir in $(find . -maxdepth 1 -type d -name "*" | grep -v "^\.$" | grep -v "^\
     (cd "$dir" && cargo test) || echo "Failed: $dir"
 done
 ```
-- Time: ~62 seconds for all 65 exercises
+- Time: ~62 seconds for 65 exercises
 - NEVER CANCEL: Full test suite takes approximately 1 minute. Set timeout to 90+ seconds.
 
 ## Validation
@@ -64,7 +65,7 @@ When working on exercises:
 5. Run tests frequently: `cargo test` 
 6. Format code: `cargo fmt --all`
 7. Check with linter: `cargo clippy`
-8. Final validation: `cargo test && cargo fmt --all -- --check && cargo clippy`
+8. Final validation: `cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy`
 
 ### Exercise States
 Exercises may be in different states:
@@ -103,15 +104,6 @@ Always exercise the implemented functionality:
 **Full Repository Operations:**
 - All exercise tests: ~62 seconds - NEVER CANCEL, set 90+ second timeout
 - All exercise formatting: ~30 seconds - NEVER CANCEL, set 60+ second timeout
-
-## Key Projects and Focus Areas
-
-### Exercise Categories
-- **Basic**: `hello-world`, `leap`, `raindrops`, `reverse-string`
-- **String Processing**: `acronym`, `pig-latin`, `pangram`, `isogram`
-- **Algorithms**: `binary-search`, `sieve`, `nth-prime`, `alphametics`
-- **Data Structures**: `bowling`, `clock`, `robot-simulator`, `simple-linked-list`
-- **Mathematics**: `grains`, `prime-factors`, `perfect-numbers`, `armstrong-numbers`
 
 ### AI/LLM Experimentation
 The repository includes examples of using different AI models (GPT-4, Claude, Gemini) to solve exercises. Reference commit history for examples of successful AI-generated solutions.
@@ -152,12 +144,46 @@ cargo test test_name
 ```bash
 # Complete development cycle for an exercise
 cd <exercise-name>
-cargo test                    # See initial state
+cargo test                                                                          # See initial state
 # Edit src/lib.rs and test files
-cargo test                    # Verify implementation
-cargo fmt --all              # Format code
-cargo clippy                 # Check for issues
-cargo test                    # Final verification
+cargo test                                                                          # Verify implementation
+cargo fmt --all                                                                     # Format code
+cargo clippy                                                                        # Check for issues
+cargo test                                                                          # Verification
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy # Final validation
 ```
 
 Always run the complete validation cycle before considering an exercise complete. The goal is working, well-formatted, lint-free code that passes all tests.
+
+
+## Security and Dependency Management
+
+**General Security Practices**
+- NEVER install packages with typos or similar names to popular packages (prevent typosquatting)
+- NEVER install plausible but non-existent package names that may be hallucinated by AI systems (prevent slopsquatting attacks)
+- Only use well-established, verified packages from official repositories
+- Always verify package names exactly match official documentation
+- Check package download counts (>1M weekly downloads preferred)
+- Verify package maintainers and GitHub repositories before use
+
+**API and Data Security**
+- Implement rate limiting for API calls
+- Use parameterized queries for any database operations
+- Sanitize column names and data before processing
+- Prevent code injection through data manipulation
+- Implement proper error handling without exposing internals
+
+**File Upload Security**
+- Sanitize all file names before processing
+- Use temporary storage with automatic cleanup for uploads
+- Never execute uploaded content as code
+
+**Client-Side Security**
+- Use Content Security Policy (CSP) headers
+- Implement proper CORS policies
+- Validate all user inputs on both client and server
+- Use HTTPS for all communications
+- Store sensitive data in memory only (no localStorage/sessionStorage for artifacts)
+
+**Role and Objective**
+- All contributors must treat security as a top priority and adapt the application to be secure and production-ready, following these requirements.
