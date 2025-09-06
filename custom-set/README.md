@@ -37,3 +37,10 @@ How it works internally doesn't matter, as long as it behaves like a set of uniq
 - @stringparser
 - @xakon
 - @ZapAnton
+
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
