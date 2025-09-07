@@ -2,6 +2,15 @@
 
 I use this repository also to experiment with AI/LLM prompts to solve the exercises.
 
+## [Copilot coding agent](https://docs.github.com/en/copilot/concepts/coding-agent/coding-agent)
+
+### model GPT 5
+
+#### Context
+
+I exclusively used GitHub Issues for this project. The workflow began with implementing the [Implement Wordy Exercise](https://github.com/lotharschulz/exercism-rust/issues/1). During this implementation, the Copilot agent detected that no Copilot instructions were present in the repository and flagged this through a [PR comment](https://github.com/lotharschulz/exercism-rust/pull/2#issuecomment-3261479075). This discovery prompted me to set up Copilot instructions as a separate issue: [✨ Set up Copilot instructions](https://github.com/lotharschulz/exercism-rust/issues/3).
+With the Copilot instructions now in place, I proceeded to implement the [implement custom-set exercise](https://github.com/lotharschulz/exercism-rust/issues/5). Interestingly, the Exercism tests and instructions were already so comprehensive and well-structured that adding Copilot instructions didn't yield a significantly improved development experience compared to the initial Wordy Exercise implementation. The quality of the existing Exercism framework proved to be the dominant factor in both cases.
+
 ## [Gemini CLI](https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/)
 
 A terminal coding assitant that can solve exercism exercises: [https://www.lotharschulz.info/2025/06/25/getting-started-with-google-gemini-cli-complete-setup-guide-and-rust-testing-experience/](https://www.lotharschulz.info/2025/06/25/getting-started-with-google-gemini-cli-complete-setup-guide-and-rust-testing-experience/) 
