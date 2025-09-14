@@ -11,9 +11,55 @@ I use this repository also to experiment with AI/LLM prompts to solve the exerci
 I exclusively used GitHub Issues for this project. The workflow began with implementing the [Implement Wordy Exercise](https://github.com/lotharschulz/exercism-rust/issues/1). During this implementation, the Copilot agent detected that no Copilot instructions were present in the repository and flagged this through a [PR comment](https://github.com/lotharschulz/exercism-rust/pull/2#issuecomment-3261479075). This discovery prompted me to set up Copilot instructions as a separate issue: [✨ Set up Copilot instructions](https://github.com/lotharschulz/exercism-rust/issues/3).
 With the Copilot instructions now in place, I proceeded to implement the [implement custom-set exercise](https://github.com/lotharschulz/exercism-rust/issues/5). Interestingly, the Exercism tests and instructions were already so comprehensive and well-structured that adding Copilot instructions didn't yield a significantly improved development experience compared to the initial Wordy Exercise implementation. The quality of the existing Exercism framework proved to be the dominant factor in both cases.
 
+## [Cursor IDE](docs.cursor.com)
+
+Cursor IDE successfully solved the [accumulate](https://github.com/lotharschulz/exercism-rust/tree/main/accumulate) exercise using its agent mode with the following structured prompt:
+
+```
+# Code Implementation
+
+Implement all _instructions_ defined in `accumulate/README.md` in the rust file:`accumulate/src/lib.rs`.
+
+## Enable all tests
+Ensure all tests in the `accumulate/tests` folder are NOT ignored and enabled. 
+
+## Test the code
+
+Run all tests in the `accumulate/tests` folder, after the implementation of the all _instructions_ in `accumulate/src/lib.rs` is done.
+
+
+## Ensure all tests pass
+
+Make sure all tests pass successfully. 
+In case test(s) fail, adapt the code implementation and rerun all tests until all tests pass.
+
+## Improve
+
+Do better. Improve the code implementation and increase readability and reduce code complexity.
+```
+
+The result worked and was good code. Cursor ran multiple commands (`cargo` and others) and as a user, I had to confirm every of the requested commands.
+
+#### Execution Process
+Cursor's agent mode performed the following steps autonomously:
+
+- Analyzed the exercise requirements from README.md
+- Generated the implementation plan
+- Implemented the solution in src/lib.rs
+- Enabled all tests by removing #[ignore] attributes
+- Executed cargo test to verify the solution
+- Refactored the code for improved readability
+- Re-tested to ensure refactoring didn't break functionality
+
+#### User Interaction
+
+- Approval Required: Each command execution (cargo test, file modifications) required user confirmation
+- Transparency: All planned changes were shown before execution
+- Control: User maintained full control over the process
+
 ## [Gemini CLI](https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/)
 
-A terminal coding assitant that can solve exercism exercises: [https://www.lotharschulz.info/2025/06/25/getting-started-with-google-gemini-cli-complete-setup-guide-and-rust-testing-experience/](https://www.lotharschulz.info/2025/06/25/getting-started-with-google-gemini-cli-complete-setup-guide-and-rust-testing-experience/) 
+Gemini cli is a terminal coding assitant that can solve exercism exercises: [https://www.lotharschulz.info/2025/06/25/getting-started-with-google-gemini-cli-complete-setup-guide-and-rust-testing-experience/](https://www.lotharschulz.info/2025/06/25/getting-started-with-google-gemini-cli-complete-setup-guide-and-rust-testing-experience/) 
 
 ## [copilot agent mode](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/)
 
