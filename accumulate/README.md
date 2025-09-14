@@ -58,3 +58,10 @@ You may want to comment some tests out and generalize your solution piece by pie
 ### Based on
 
 Conversation with James Edward Gray II - http://graysoftinc.com/
+
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
