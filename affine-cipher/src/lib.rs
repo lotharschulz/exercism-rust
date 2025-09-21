@@ -9,48 +9,45 @@ pub enum AffineCipherError {
 /// returning a return code, the more common convention in Rust is to return a `Result`.
 pub fn encode(plaintext: &str, a: i32, b: i32) -> Result<String, AffineCipherError> {
     // Validate that a and 26 are coprime
-    if gcd(a.rem_euclid(26), 26) != 1 {
+    if greatest_common_divisor(a.rem_euclid(26), 26) != 1 {
         return Err(AffineCipherError::NotCoprime(a));
     }
 
     let a = a.rem_euclid(26);
     let b = b.rem_euclid(26);
 
-    // Build encoded characters (letters transformed, digits preserved),
-    // then group into chunks of 5 characters separated by spaces
-    let mut out = String::new();
-    let mut count = 0usize; // number of emitted non-space chars
-
-    for ch in plaintext.chars() {
+    // Closure to encode a single character; returns None for ignored characters
+    let encode_char = |ch: char| -> Option<char> {
         if ch.is_ascii_alphabetic() {
             let lower = ch.to_ascii_lowercase();
             let x = (lower as u8 - b'a') as i32;
             let y = (a * x + b).rem_euclid(26) as u8;
-            let enc = (b'a' + y) as char;
-            if count > 0 && count % 5 == 0 {
-                out.push(' ');
-            }
-            out.push(enc);
-            count += 1;
+            Some((b'a' + y) as char)
         } else if ch.is_ascii_digit() {
-            if count > 0 && count % 5 == 0 {
-                out.push(' ');
-            }
-            out.push(ch);
-            count += 1;
+            Some(ch)
         } else {
-            // ignore punctuation, spaces, etc.
+            None
         }
-    }
+    };
 
-    Ok(out)
+    // Build a flat string of encoded chars (letters transformed, digits preserved)
+    let flat: Vec<char> = plaintext.chars().filter_map(encode_char).collect();
+
+    // Group into chunks of 5 characters separated by spaces
+    let grouped = flat
+        .chunks(5)
+        .map(|chunk| chunk.iter().collect::<String>())
+        .collect::<Vec<_>>()
+        .join(" ");
+
+    Ok(grouped)
 }
 
 /// Decodes the ciphertext using the affine cipher with key (`a`, `b`). Note that, rather than
 /// returning a return code, the more common convention in Rust is to return a `Result`.
 pub fn decode(ciphertext: &str, a: i32, b: i32) -> Result<String, AffineCipherError> {
     // Validate that a and 26 are coprime
-    if gcd(a.rem_euclid(26), 26) != 1 {
+    if greatest_common_divisor(a.rem_euclid(26), 26) != 1 {
         return Err(AffineCipherError::NotCoprime(a));
     }
 
@@ -58,26 +55,26 @@ pub fn decode(ciphertext: &str, a: i32, b: i32) -> Result<String, AffineCipherEr
     let b = b.rem_euclid(26);
     let a_inv = mod_inverse(a, 26).expect("a and 26 are coprime, inverse must exist");
 
-    let mut out = String::new();
-    for ch in ciphertext.chars() {
+    // Closure to decode a single character; returns None for ignored characters
+    let decode_char = |ch: char| -> Option<char> {
         if ch.is_ascii_alphabetic() {
             let lower = ch.to_ascii_lowercase();
             let y = (lower as u8 - b'a') as i32;
             let x = (a_inv * (y - b)).rem_euclid(26) as u8;
-            let dec = (b'a' + x) as char;
-            out.push(dec);
+            Some((b'a' + x) as char)
         } else if ch.is_ascii_digit() {
-            out.push(ch);
+            Some(ch)
         } else {
-            // ignore spaces, punctuation, etc.
+            None
         }
-    }
+    };
 
-    Ok(out)
+    let decoded: String = ciphertext.chars().filter_map(decode_char).collect();
+    Ok(decoded)
 }
 
 // Compute greatest common divisor using Euclidean algorithm (non-negative result)
-fn gcd(mut a: i32, mut b: i32) -> i32 {
+fn greatest_common_divisor(mut a: i32, mut b: i32) -> i32 {
     a = a.abs();
     b = b.abs();
     while b != 0 {
@@ -105,7 +102,11 @@ fn mod_inverse(a: i32, m: i32) -> Option<i32> {
         new_r = tmp_r;
     }
 
-    if r > 1 { return None; }
-    if t < 0 { t += m; }
+    if r > 1 {
+        return None;
+    }
+    if t < 0 {
+        t += m;
+    }
     Some(t)
 }
