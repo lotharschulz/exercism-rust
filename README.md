@@ -61,6 +61,57 @@ Cursor's agent mode performed the following steps autonomously:
 
 Gemini cli is a terminal coding assitant that can solve exercism exercises: [https://www.lotharschulz.info/2025/06/25/getting-started-with-google-gemini-cli-complete-setup-guide-and-rust-testing-experience/](https://www.lotharschulz.info/2025/06/25/getting-started-with-google-gemini-cli-complete-setup-guide-and-rust-testing-experience/) 
 
+### Benchmark Harness Automation
+
+You can auto-generate a Criterion benchmark scaffold for an exercise:
+
+```
+chmod +x .github/scripts/inject_benchmark.sh
+.github/scripts/inject_benchmark.sh <exercise-dir> <function-name>
+# Example:
+.github/scripts/inject_benchmark.sh accumulate accumulate
+```
+
+This will:
+- Copy the benchmark template
+- Insert a benchmark calling the specified function
+- Add `criterion` to `[dev-dependencies]` if missing
+- Append a `[[bench]]` section
+
+Run benchmarks with:
+
+```
+cd <exercise-dir>
+cargo bench
+```
+
+## Copilot Prompt Taxonomy
+
+| Role | File | Purpose |
+|------|------|---------|
+| Core implementation | `solve-exercise.md` | Main iterative solve loop (enable tests → implement → iterate) |
+| Legacy alias | `implement-exercise.md` | Deprecated; forwards to `solve-exercise.md` |
+| Validation | `validate-solution.md` | Post-implementation quality gates (tests, fmt, clippy, docs) |
+| Idiomatic refinement | `rust-idioms.md` | Refactor toward clear, idiomatic Rust |
+| Performance | `optimize-solution.md` | Benchmark & improve critical paths |
+| Documentation | `documentation.md` | Add/verify `///` docs and README improvements |
+| Troubleshooting | `troubleshoot-tests.md` | Deep dive when failures persist after solve loop |
+| TDD mode | `test-driven.md` | Red → Green → Refactor workflow |
+| Shared reference | `shared-core-flow.md` | Minimal canonical sequence (referenced by others) |
+
+### Doc Enforcement
+If `agent.yml` sets `metadata.default.enforce_doc_on_public: true`, CI will fail when
+public items lack doc comments. To temporarily relax this, set the flag to `false` in
+`.github/copilot/agent.yml` (not recommended for long-term hygiene).
+
+### Optimization Benchmarks
+The optimize prompt assumes (but does not force) criterion usage. Use the injector script
+to scaffold when exploring performance changes:
+
+```
+.github/scripts/inject_benchmark.sh <exercise> <function>
+```
+
 ## [copilot agent mode](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/)
 
 ### model: GPT 4.1
