@@ -1,0 +1,47 @@
+name: Copilot Agent Config Lint
+
+on:
+  push:
+    paths:
+      - '.github/copilot/agent.yml'
+  pull_request:
+    paths:
+      - '.github/copilot/agent.yml'
+
+jobs:
+  validate-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install yq
+        uses: mikefarah/yq@v4.44.3
+        with:
+          cmd: --version
+
+      - name: Basic YAML parse validation
+        run: |
+          yq '.version' .github/copilot/agent.yml >/dev/null
+
+      - name: Schema presence checks
+        run: |
+          REQUIRED_KEYS=(prompts execution quality_gates parameters)
+          for key in "${REQUIRED_KEYS[@]}"; do
+            if ! yq -e ".${key}" .github/copilot/agent.yml > /dev/null; then
+              echo "Missing required top-level key: $key" >&2
+              exit 1
+            fi
+          done
+
+      - name: Fail if disallowed fields present
+        run: |
+          # Example guard: forbid accidental inclusion of secrets-looking keys
+          if grep -Ei 'api[_-]?key|secret' .github/copilot/agent.yml; then
+            echo "Forbidden secret-like key detected" >&2
+            exit 1
+          fi
+
+      - name: Echo summary
+        run: |
+          echo "agent.yml validation passed."

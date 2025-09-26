@@ -1,0 +1,46 @@
+name: Rust Validation
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          components: clippy
+
+      - name: Run tests
+        run: |
+          for dir in $(find . -maxdepth 1 -type d -name "*" | grep -v "^\.$" | grep -v "^\.git" | sort); do
+              echo "Testing $dir"
+              (cd "$dir" && cargo test) || echo "Failed: $dir"
+          done
+
+      - name: Format code
+        run: cargo fmt --all -- --check
+
+      - name: Run Clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Build & check docs (no dependencies)
+        env:
+          RUSTDOCFLAGS: -D warnings
+        run: |
+          # Iterate over each exercise crate and build docs without dependencies.
+          for dir in $(find . -maxdepth 1 -type d -name "*" | grep -v "^\.\$" | grep -v "^\.git" | sort); do
+            if [ -f "$dir/Cargo.toml" ]; then
+              echo "Building docs for $dir"
+              (cd "$dir" && cargo doc --no-deps --quiet) || { echo "Doc build failed for $dir" >&2; exit 1; }
+            fi
+          done
+
+      - name: Check for compilation errors
+        run: cargo check --all

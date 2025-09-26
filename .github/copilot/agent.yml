@@ -1,0 +1,133 @@
+################################################################################
+# Copilot Agent Configuration for Exercism Rust Track
+#
+# Purpose: Provide a consistent, opinionated workflow for solving Exercism Rust
+# exercises using Copilot Agent mode. Focus areas: correctness, readability,
+# idiomatic Rust, safety, incremental improvement, and reproducibility.
+################################################################################
+
+version: 1
+description: "Agent workflows & quality gates for Exercism Rust exercises"
+
+prompts:
+  implement: ".github/copilot/prompts/implement-exercise.md"   # Deprecated alias → use 'solve'
+  solve: ".github/copilot/prompts/solve-exercise.md"
+  validate: ".github/copilot/prompts/validate-solution.md"
+  troubleshoot: ".github/copilot/prompts/troubleshoot-tests.md"
+  tdd: ".github/copilot/prompts/test-driven.md"
+  optimize: ".github/copilot/prompts/optimize-solution.md"
+  idioms: ".github/copilot/prompts/rust-idioms.md"
+  docs: ".github/copilot/prompts/documentation.md"
+  core_flow_ref: ".github/copilot/prompts/shared-core-flow.md"
+
+workflows:
+  default_solve_sequence:
+    - solve         # Implement TODOs, enable tests
+    - validate      # Ensure passing tests & quality gates
+    - idioms        # Refine toward idiomatic Rust
+    - docs          # Update comments / README snippets
+  tdd_sequence:
+    - tdd
+    - validate
+    - docs
+  performance_focus:
+    - solve
+    - validate
+    - optimize
+    - validate
+
+execution:
+  run_tests: true
+  enable_all_tests: true              # Remove #[ignore] guards automatically
+  validate_code_quality: true
+  stop_on_first_red_test_cycle: false # Allow iterative fix cycles
+  max_cycles: 5                       # Hard stop to avoid infinite loops
+
+exercise_settings:
+  heavy_exercises:
+    - alphametics
+    - palindrome-products
+  timeouts_seconds:
+    default: 45
+    heavy: 120
+    lint: 30
+    format: 15
+  retry_backoff_seconds: [2, 4, 8]
+
+metadata:
+  # Per-exercise overrides enabling fine-grained tuning. Keys match directory names.
+  overrides:
+    alphametics:
+      max_cycles: 8
+      timeouts:
+        test: 120
+      notes: "Complex search space; allow more cycles & time."
+    palindrome-products:
+      max_cycles: 7
+      timeouts:
+        test: 110
+      notes: "Brute force heavy; consider early-pruning strategies."
+    wordy:
+      prompts_append:
+        - "Emphasize parsing robustness and invalid input handling."
+    pig-latin:
+      prompts_append:
+        - "Edge cases: consonant clusters (qu), xr, yt, punctuation preservation."
+  default:
+    prompts_append:
+      - "Confirm no ignored tests remain before optimization phase."
+    enforce_doc_on_public: true
+
+quality_gates:
+  tests: cargo test --manifest-path Cargo.toml
+  fmt_check: cargo fmt --all -- --check
+  clippy: cargo clippy --all-targets -- -D warnings
+  compile_check: cargo check --all
+  order: [tests, fmt_check, clippy]
+
+conventions:
+  source_file_glob: "src/**/*.rs"
+  test_file_glob: "tests/**/*.rs"
+  avoid_unnecessary_deps: true
+  commit_message_format: "<exercise>: <short imperative summary>"
+  branch_naming: "exercise/<slug>"
+
+security_constraints:
+  forbid_network_access: true
+  forbid_unreviewed_dependencies: true
+  allowlisted_crates: ["std"]
+  notes: |
+    Only introduce new crates if absolutely required and well-established. For
+    benchmarking, prefer optional local harness templates before adding deps.
+
+lint_preferences:
+  deny:
+    - warnings
+  allow:
+    - clippy::pedantic  # Not enabling pedantic by default (left configurable)
+
+documentation:
+  exercise_readme_template: ".github/templates/exercise-readme.md"
+  benchmark_template: ".github/templates/benchmark-template.rs"
+
+fallbacks:
+  if_tests_missing: "Generate scaffold tests only if explicitly requested—otherwise abort."
+  if_missing_todos: "Verify all tests pass; if so, offer idiom & optimization prompts."
+
+parameters:
+  timeout: 45          # Seconds per standard operation
+  retries: 3
+  debug_mode: false
+
+telemetry:
+  anonymized: false
+  record_prompt_history: true
+
+notes: |
+  This configuration is intentionally strict to encourage high-quality, idiomatic
+  Rust submissions. Adjust timeouts locally if working on extremely slow machines.
+  The agent should surface a clear diff summary after each modifying cycle.
+
+################################################################################
+# End of configuration
+################################################################################
