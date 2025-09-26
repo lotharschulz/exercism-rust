@@ -55,7 +55,7 @@ jobs:
           done)
 
           total_checked=0
-            total_missing=0
+          total_missing=0
 
           scan_file() {
             local file="$1"

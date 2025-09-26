@@ -11,9 +11,9 @@ pub fn reverse(input: &str) -> String {
         .rev()
         // Collect all the chars into a new owned String.
         .collect();
-    return reversed
+    return reversed;
     // -------
-    // 'cargo test' would pass, 'cargo test --features grapheme' would not 
+    // 'cargo test' would pass, 'cargo test --features grapheme' would not
     // let reversed: String = input.chars().rev().collect();
     // return reversed
 }

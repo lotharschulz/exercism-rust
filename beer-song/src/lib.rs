@@ -10,8 +10,11 @@ pub fn sing(start: u32, end: u32) -> String {
     let mut result: String = String::from("");
     for i in (end..=start).rev() {
         let str = verse(i);
-        if i == start { result = format!("{0}", str); } 
-        else          { result = format!("{0}\n{1}", result, str); }
+        if i == start {
+            result = format!("{0}", str);
+        } else {
+            result = format!("{0}\n{1}", result, str);
+        }
     }
     result
 }

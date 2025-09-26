@@ -8,9 +8,9 @@ fn sorted_chars(s: &str) -> Vec<char> {
 
 pub fn anagrams_for<'a>(word: &str, possible_anagrams: &[&'a str]) -> HashSet<&'a str> {
     let mut result = HashSet::new();
-    let sorted_word:Vec<char> = sorted_chars(word);
-    for anagram in possible_anagrams{
-        if word.to_lowercase() != anagram.to_lowercase() && sorted_word == sorted_chars(anagram){
+    let sorted_word: Vec<char> = sorted_chars(word);
+    for anagram in possible_anagrams {
+        if word.to_lowercase() != anagram.to_lowercase() && sorted_word == sorted_chars(anagram) {
             result.insert(*anagram);
         }
     }
