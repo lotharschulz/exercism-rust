@@ -11,7 +11,7 @@ pub fn sing(start: u32, end: u32) -> String {
     for i in (end..=start).rev() {
         let str = verse(i);
         if i == start {
-            result = format!("{0}", str);
+            result = str.to_string();
         } else {
             result = format!("{0}\n{1}", result, str);
         }

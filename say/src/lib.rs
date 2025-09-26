@@ -45,7 +45,7 @@ fn encode_chunk(n: u64) -> String {
     if hundreds > 0 {
         result.push_str(&format!("{} hundred", encode_unit(hundreds)));
         if remainder > 0 {
-            result.push_str(" ");
+            result.push(' ');
         }
     }
 

@@ -25,7 +25,7 @@ pub fn decode(source: &str) -> String {
     let mut decoded = String::new();
     let mut count = String::new();
     for c in source.chars() {
-        if c.is_digit(10) {
+        if c.is_ascii_digit() {
             count.push(c);
         } else {
             let repeat = count.parse::<usize>().unwrap_or(1);

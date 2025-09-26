@@ -3,7 +3,7 @@ pub fn is_valid(code: &str) -> bool {
     let code = code.replace(" ", "");
 
     // Check if the length is less than or equal to 1 or if any character is not a digit
-    if code.len() <= 1 || !code.chars().all(|c| c.is_digit(10)) {
+    if code.len() <= 1 || !code.chars().all(|c| c.is_ascii_digit()) {
         return false;
     }
 
