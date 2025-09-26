@@ -3,8 +3,8 @@ use std::collections::HashSet;
 // Represents a palindrome number with its factors
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Palindrome {
-    value: u64,                    // The palindrome number itself
-    factors: HashSet<(u64, u64)>,  // Set of factor pairs that produce this palindrome
+    value: u64,                   // The palindrome number itself
+    factors: HashSet<(u64, u64)>, // Set of factor pairs that produce this palindrome
 }
 
 impl Palindrome {
@@ -50,7 +50,8 @@ pub fn palindrome_products(min: u64, max: u64) -> Option<(Palindrome, Palindrome
 
     // Iterate through all possible factor pairs
     for i in min..=max {
-        for j in i..=max {  // Start from i to avoid duplicate factor pairs
+        for j in i..=max {
+            // Start from i to avoid duplicate factor pairs
             let product = i * j;
             if is_palindrome(product) {
                 // Handle minimum palindrome

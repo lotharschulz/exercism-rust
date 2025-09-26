@@ -11,6 +11,5 @@ pub fn nth(n: u32) -> u32 {
 }
 
 fn is_prime(n: u32) -> bool {
-    (2..=f32::sqrt(n as f32) as u32)
-        .all(|i| n % i != 0)
+    (2..=f32::sqrt(n as f32) as u32).all(|i| n % i != 0)
 }

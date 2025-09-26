@@ -67,7 +67,7 @@ pub fn solve(
                 c2 += c1;
                 c1 = 0;
             } else {
-                c1 = c1 - (c2_max - c2);
+                c1 -= c2_max - c2;
                 c2 = c2_max;
             }
             moves += 1;

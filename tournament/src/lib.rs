@@ -56,9 +56,7 @@ pub fn tally(match_results: &str) -> String {
         }
     }
     let mut teams: Vec<_> = table.into_iter().collect();
-    teams.sort_by(|a, b| {
-        b.1.p.cmp(&a.1.p).then_with(|| a.0.cmp(&b.0))
-    });
+    teams.sort_by(|a, b| b.1.p.cmp(&a.1.p).then_with(|| a.0.cmp(&b.0)));
     let mut output = String::from("Team                           | MP |  W |  D |  L |  P");
     for (name, stats) in teams {
         output.push('\n');

@@ -1,3 +1,4 @@
+#[allow(clippy::needless_range_loop)]
 pub fn spiral_matrix(size: u32) -> Vec<Vec<u32>> {
     if size == 0 {
         return Vec::new(); // Return empty vector for size 0

@@ -62,14 +62,14 @@ pub fn solve(input: &str) -> Option<HashMap<char, u8>> {
                 map.remove(&c);
             }
         }
-        return false;
+        false
     }
 
     let mut map = HashMap::new();
     let mut used = [false; 10];
     if solve_recursive(&chars, &mut map, &mut used, &words, result_word) {
-        return Some(map);
+        Some(map)
     } else {
-        return None;
+        None
     }
 }

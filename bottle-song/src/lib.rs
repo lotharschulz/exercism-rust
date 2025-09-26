@@ -7,24 +7,18 @@ pub fn recite(start_bottles: u32, take_down: u32) -> String {
         }
 
         song.push_str(&match current_bottles {
-            2 => format!(
-                "Two green bottles hanging on the wall,\n\
+            2 => "Two green bottles hanging on the wall,\n\
                  Two green bottles hanging on the wall,\n\
                  And if one green bottle should accidentally fall,\n\
-                 There'll be one green bottle hanging on the wall."
-            ),
-            1 => format!(
-                "One green bottle hanging on the wall,\n\
+                 There'll be one green bottle hanging on the wall.".to_string(),
+            1 => "One green bottle hanging on the wall,\n\
                  One green bottle hanging on the wall,\n\
                  And if one green bottle should accidentally fall,\n\
-                 There'll be no green bottles hanging on the wall."
-            ),
-            0 => format!(
-                "No green bottles hanging on the wall,\n\
+                 There'll be no green bottles hanging on the wall.".to_string(),
+            0 => "No green bottles hanging on the wall,\n\
                  No green bottles hanging on the wall,\n\
                  And if one green bottle should accidentally fall,\n\
-                 There'll be no green bottles hanging on the wall."
-            ),
+                 There'll be no green bottles hanging on the wall.".to_string(),
             n => {
                 let next_bottles = current_bottles - 1;
                 let next_bottles_str = if next_bottles == 1 {
