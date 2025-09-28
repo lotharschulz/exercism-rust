@@ -1,0 +1,47 @@
+{
+  "project_type": "rust_exercises",
+  "test_framework": "rust_native",
+  "workflow": {
+    "auto_run_tests": true,
+    "auto_format": true,
+    "auto_clippy": true
+  },
+  "commands": {
+    "test": "cargo test",
+    "format": "cargo fmt --all",
+    "lint": "cargo clippy -- -W clippy::pedantic",
+    "bench": "cargo bench",
+    "check": "cargo check",
+    "build": "cargo build --release",
+    "doc": "cargo doc --no-deps",
+    "finalVerification": "cargo test && cargo fmt --all -- --check && cargo clippy -- -W clippy::pedantic"
+  },
+  "file_patterns": {
+    "solution": "src/lib.rs",
+    "tests": "tests/*.rs",
+    "readme": "README.md",
+    "config": "Cargo.toml"
+  },
+  "exercise_workflow": [
+    "read_requirements",
+    "implement_minimal",
+    "enable_tests",
+    "iterate_until_pass",
+    "refactor",
+    "format",
+    "lint",
+    "document"
+  ],
+  "rust_preferences": {
+    "edition": "2021",
+    "prefer_iterators": true,
+    "use_clippy_pedantic": true,
+    "require_documentation": true,
+    "forbid_unsafe": true
+  },
+  "error_handling": {
+    "prefer_result": true,
+    "avoid_panic": true,
+    "use_expect_with_message": true
+  }
+}
