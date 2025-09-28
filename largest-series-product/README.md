@@ -62,3 +62,11 @@ Let's work through an example, with the input `"63915"`.
 ### Based on
 
 A variation on Problem 8 at Project Euler - https://projecteuler.net/problem=8
+
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy -- -W clippy::pedantic
+cargo test --release
+```
