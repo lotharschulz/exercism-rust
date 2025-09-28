@@ -2,13 +2,13 @@
 
 I use this repository also to experiment with AI/LLM prompts to solve the exercises.
 
+## [Claude Code](https://claudecode.io/)
+
+I used implementing the [diamond challenge](https://exercism.org/tracks/rust/exercises/diamond) and the [largest-series-product](https://exercism.org/tracks/rust/exercises/largest-series-product) exercises. The [.claude](https://github.com/lotharschulz/exercism-rust/tree/main/.claude) folder enabled resolved exercise with [short](https://github.com/lotharschulz/exercism-rust/commit/7de48659e33c3a8416ee872e5f5f1851e3946f86) and [detailed](https://github.com/lotharschulz/exercism-rust/commit/8c4b24b6b67fd7538d4e8bad9cdd5c35a9952bd0) prompts.
+
 ## [Copilot coding agent](https://docs.github.com/en/copilot/concepts/coding-agent/coding-agent)
 
-### model GPT 5
-
-#### Context
-
-I used implementing the [Crypto Square](https://github.com/lotharschulz/exercism-rust/issues/7) - that issue is really short (compare other below) because the [.github](https://github.com/lotharschulz/exercism-rust/tree/main/.github) folder contains already copilot [prompts](https://github.com/lotharschulz/exercism-rust/tree/main/.github/copilot/prompts) and [agent](https://github.com/lotharschulz/exercism-rust/blob/main/.github/copilot/agent.yml) instructions.
+I used implementing the [Crypto Square](https://github.com/lotharschulz/exercism-rust/issues/7) exercise - that issue is really short (compare others below) because the [.github](https://github.com/lotharschulz/exercism-rust/tree/main/.github) folder contains already copilot [prompts](https://github.com/lotharschulz/exercism-rust/tree/main/.github/copilot/prompts) and [agent](https://github.com/lotharschulz/exercism-rust/blob/main/.github/copilot/agent.yml) instructions.
 
 An earlier attempt was implementing the [Wordy Exercise](https://github.com/lotharschulz/exercism-rust/issues/1). During this implementation, the Copilot agent detects that no Copilot instructions were present in the repository and flagged this through a [PR comment](https://github.com/lotharschulz/exercism-rust/pull/2#issuecomment-3261479075). This discovery prompted me to set up Copilot instructions as a separate issue: [✨ Set up Copilot instructions](https://github.com/lotharschulz/exercism-rust/issues/3).
 
