@@ -84,5 +84,6 @@ Seb Rose - https://web.archive.org/web/20220807163751/http://claysnow.co.uk/recy
 ### Verification
 
 ```sh
-cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy -- -W clippy::pedantic
+cargo test --release
 ```
