@@ -8,7 +8,10 @@ I use this repository also to experiment with AI/LLM prompts to solve the exerci
 
 #### Context
 
-The coding agent workflow begins with implementing the [Implement Wordy Exercise](https://github.com/lotharschulz/exercism-rust/issues/1). During this implementation, the Copilot agent detects that no Copilot instructions were present in the repository and flagged this through a [PR comment](https://github.com/lotharschulz/exercism-rust/pull/2#issuecomment-3261479075). This discovery prompted me to set up Copilot instructions as a separate issue: [✨ Set up Copilot instructions](https://github.com/lotharschulz/exercism-rust/issues/3).
+I used implementing the [Crypto Square](https://github.com/lotharschulz/exercism-rust/issues/7) - that issue is really short (compare other below) because the [.github](https://github.com/lotharschulz/exercism-rust/tree/main/.github) folder contains already copilot [prompts](https://github.com/lotharschulz/exercism-rust/tree/main/.github/copilot/prompts) and [agent](https://github.com/lotharschulz/exercism-rust/blob/main/.github/copilot/agent.yml) instructions.
+
+An earlier attempt was implementing the [Wordy Exercise](https://github.com/lotharschulz/exercism-rust/issues/1). During this implementation, the Copilot agent detects that no Copilot instructions were present in the repository and flagged this through a [PR comment](https://github.com/lotharschulz/exercism-rust/pull/2#issuecomment-3261479075). This discovery prompted me to set up Copilot instructions as a separate issue: [✨ Set up Copilot instructions](https://github.com/lotharschulz/exercism-rust/issues/3).
+
 With the Copilot instructions in place, I proceeded to implement the [implement custom-set exercise](https://github.com/lotharschulz/exercism-rust/issues/5). Interestingly, the Exercism tests and instructions were already so comprehensive and well-structured that adding Copilot instructions didn't yield a significantly improved development experience compared to the initial Wordy Exercise implementation. The quality of the existing Exercism framework proved to be the dominant factor in both cases.
 
 ## [Cursor IDE](docs.cursor.com)
