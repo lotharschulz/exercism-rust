@@ -1,0 +1,20 @@
+{
+  "composer": {
+    "defaultModel": "claude-3.5-sonnet",
+    "temperature": 0.3,
+    "maxTokens": 4000,
+    "autoSave": true,
+    "showDiff": true,
+    "confirmBeforeApply": true,
+    "multiFileEditing": {
+      "enabled": true,
+      "maxFiles": 10,
+      "preserveFormatting": true
+    },
+    "codeGeneration": {
+      "includeTests": true,
+      "includeDocumentation": true,
+      "followExistingPatterns": true
+    }
+  }
+}

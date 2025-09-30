@@ -1,0 +1,22 @@
+{
+  "models": {
+    "primary": "claude-3.5-sonnet",
+    "fallback": "gpt-4o",
+    "fast": "claude-3.5-haiku",
+    "preferences": {
+      "rust": "claude-3.5-sonnet",
+      "documentation": "gpt-4o",
+      "tests": "claude-3.5-sonnet",
+      "refactoring": "gpt-4o"
+    }
+  },
+  "contextWindow": {
+    "maxTokens": 100000,
+    "reserveTokens": 2000
+  },
+  "behavior": {
+    "autoSelectModel": true,
+    "preferLocalModels": false,
+    "streamResponses": true
+  }
+}
