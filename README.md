@@ -14,6 +14,33 @@ An earlier attempt was implementing the [Wordy Exercise](https://github.com/loth
 
 With those instructions in place, I proceeded to implement the [custom-set exercise](https://github.com/lotharschulz/exercism-rust/issues/5). Interestingly, the existing Exercism tests and instructions were already so comprehensive and well-structured that adding Copilot instructions didn’t significantly enhance the development experience. In both the Wordy and Custom Set exercises, the quality of the Exercism framework proved to be the dominant factor.
 
+## [Windsurf IDE](https://windsurf.com/editor)
+
+Windsurf IDE successfully solved the [atbash-cipher](https://github.com/lotharschulz/exercism-rust/tree/main/atbash-cipher) exercise using the following prompt:
+
+```
+# Code Implementation
+
+Implement all _instructions_ defined in `atbash-cipher/README.md` in the rust file:`atbash-cipher/src/lib.rs`.
+
+## Enable all tests
+Ensure all tests in the `atbash-cipher/tests` folder are NOT ignored and enabled. 
+
+## Test the code
+
+Run all tests in the `atbash-cipher/tests` folder, after the implementation of the all _instructions_ in `atbash-cipher/src/lib.rs` is done.
+
+
+## Ensure all tests pass
+
+Make sure all tests pass successfully. 
+In case test(s) fail, adapt the code implementation and rerun all tests until all tests pass.
+
+## Improve
+
+Do better. Improve the code implementation and increase readability and reduce code complexity.
+```
+
 ## [Cursor IDE](docs.cursor.com)
 
 Cursor IDE successfully solved the [accumulate](https://github.com/lotharschulz/exercism-rust/tree/main/accumulate) exercise using its agent mode with the following structured prompt:
