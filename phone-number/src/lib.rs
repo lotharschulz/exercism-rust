@@ -1,3 +1,4 @@
+#[must_use]
 pub fn number(user_number: &str) -> Option<String> {
     // Keep only digits
     let mut digits = String::with_capacity(user_number.len());
