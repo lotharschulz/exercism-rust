@@ -16,19 +16,19 @@ With those instructions in place, I proceeded to implement the [custom-set exerc
 
 ## [Windsurf IDE](https://windsurf.com/editor)
 
-Windsurf IDE successfully solved the [atbash-cipher](https://github.com/lotharschulz/exercism-rust/tree/main/atbash-cipher) exercise using the following prompt:
+Windsurf IDE successfully solved the [luhn-from](https://exercism.org/tracks/rust/exercises/luhn-from) and [atbash-cipher](https://github.com/lotharschulz/exercism-rust/tree/main/atbash-cipher) exercise using the following prompt:
 
 ```
 # Code Implementation
 
-Implement all _instructions_ defined in `atbash-cipher/README.md` in the rust file:`atbash-cipher/src/lib.rs`.
+Implement all _instructions_ defined in `atbash-cipher/README.md` (`luhn-from/README.md`)  in the rust file:`atbash-cipher/src/lib.rs` (`luhn-from/src/lib.rs`) .
 
 ## Enable all tests
-Ensure all tests in the `atbash-cipher/tests` folder are NOT ignored and enabled. 
+Ensure all tests in the `atbash-cipher/tests` (`luhn-from/tests`)  folder are NOT ignored and enabled. 
 
 ## Test the code
 
-Run all tests in the `atbash-cipher/tests` folder, after the implementation of the all _instructions_ in `atbash-cipher/src/lib.rs` is done.
+Run all tests in the `atbash-cipher/tests` (`luhn-from/tests`)  folder, after the implementation of the all _instructions_ in `atbash-cipher/src/lib.rs` (`luhn-from/src/lib.rs`)  is done.
 
 
 ## Ensure all tests pass
@@ -40,6 +40,15 @@ In case test(s) fail, adapt the code implementation and rerun all tests until al
 
 Do better. Improve the code implementation and increase readability and reduce code complexity.
 ```
+
+Also Windsurf solved the [luhn-trait](https://exercism.org/tracks/rust/exercises/luhn-trait) exercise with a much smaller prompt:
+
+```
+Implement all _instructions_ defined in luhn-trait/README.md  in the rust file:luhn-trait/src/lib.rs .
+```
+
+I noticed differences in the quality of the results, but in my observation independent from the prompt. 
+The smaller prompt cause an implementation that passed all criteria with the first iteration ([840b6e6](https://github.com/lotharschulz/exercism-rust/commit/840b6e6da97d89f67c536448c73e4bfd76f796e7)). One of the bigger prompts triggered runs, resulted in an implementation including clippy findings ([87ab5ab](https://github.com/lotharschulz/exercism-rust/commit/87ab5ab35e2f0702c72310f53ca28363e1bc660f))
 
 ## [Cursor IDE](docs.cursor.com)
 
