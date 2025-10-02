@@ -33,7 +33,11 @@ where
     I: Iterator,
     J: Iterator<Item = I::Item>,
 {
-    Append { a, b, using_b: false }
+    Append {
+        a,
+        b,
+        using_b: false,
+    }
 }
 
 /// Iterator that flattens an iterator of iterators.
@@ -78,7 +82,10 @@ where
     I: Iterator,
     I::Item: Iterator,
 {
-    Concat { outer: nested_iter, current_inner: None }
+    Concat {
+        outer: nested_iter,
+        current_inner: None,
+    }
 }
 
 /// Iterator that yields only items matching a predicate.
@@ -98,8 +105,9 @@ where
 {
     type Item = I::Item;
 
+    #[allow(clippy::manual_find)]
     fn next(&mut self) -> Option<Self::Item> {
-        while let Some(item) = self.iter.next() {
+        for item in self.iter.by_ref() {
             if (self.predicate)(&item) {
                 return Some(item);
             }
@@ -117,9 +125,9 @@ where
     Filter { iter, predicate }
 }
 
-pub fn length<I: Iterator>(mut iter: I) -> usize {
+pub fn length<I: Iterator>(iter: I) -> usize {
     let mut count = 0usize;
-    while iter.next().is_some() {
+    for _item in iter {
         count += 1;
     }
     count
@@ -152,12 +160,12 @@ where
     Map { iter, function }
 }
 
-pub fn foldl<I, F, U>(mut iter: I, mut initial: U, function: F) -> U
+pub fn foldl<I, F, U>(iter: I, mut initial: U, function: F) -> U
 where
     I: Iterator,
     F: Fn(U, I::Item) -> U,
 {
-    while let Some(item) = iter.next() {
+    for item in iter {
         initial = function(initial, item);
     }
     initial
