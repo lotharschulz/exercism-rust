@@ -52,7 +52,7 @@ The smaller prompt cause an implementation that passed all criteria with the fir
 
 ## [Cursor IDE](docs.cursor.com)
 
-Cursor IDE successfully solved the [accumulate](https://github.com/lotharschulz/exercism-rust/tree/main/accumulate) exercise using its agent mode with the following structured prompt:
+Cursor IDE successfully solved the [accumulate](https://github.com/lotharschulz/exercism-rust/tree/main/accumulate) and [list-ops](https://exercism.org/tracks/rust/exercises/list-ops)  exercise using its agent mode with the following structured prompt:
 
 ```
 # Code Implementation
@@ -76,8 +76,17 @@ In case test(s) fail, adapt the code implementation and rerun all tests until al
 
 Do better. Improve the code implementation and increase readability and reduce code complexity.
 ```
+(replace 'accumulate' with 'list-ops' in ^^^ for the phone number exercise)
 
-The result worked and was good code. Cursor ran multiple commands (`cargo` and others) and as a user, I had to confirm every of the requested commands.
+The result worked and was good code, still in one case cause clippy warnings ([ba72c13](https://github.com/lotharschulz/exercism-rust/commit/ba72c13b4d45ca0a7babab5c5212511a9b4d851c)).
+
+A much smaller prompt:
+```
+Implement all _instructions_ defined in `phone-number/README.md` in the rust file:`phone-number/src/lib.rs`.
+```
+resolved the [phone-number](https://exercism.org/tracks/rust/exercises/phone-number). Similar to above, the first implementation included clippy warnings ([5c2175a](https://github.com/lotharschulz/exercism-rust/commit/5c2175a46016cbc6ca762ad0b10051ce65d3fd0e))
+
+Cursor ran multiple commands (`cargo` and others) and as a user, I had to confirm every of the requested commands.
 
 #### Execution Process
 Cursor's agent mode performed the following steps autonomously:
