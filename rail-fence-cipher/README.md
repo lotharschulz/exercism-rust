@@ -80,3 +80,11 @@ If you now read along the zig-zag shape you can read the original message.
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Transposition_cipher#Rail_Fence_cipher
+
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy -- -W clippy::pedantic
+cargo test --release
+```
