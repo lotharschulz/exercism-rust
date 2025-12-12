@@ -81,7 +81,6 @@ If you now read along the zig-zag shape you can read the original message.
 
 Wikipedia - https://en.wikipedia.org/wiki/Transposition_cipher#Rail_Fence_cipher
 
-
 ### Verification
 
 ```sh
