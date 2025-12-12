@@ -11,7 +11,6 @@ fn encode_with_two_rails() {
 }
 
 #[test]
-#[ignore]
 fn encode_with_three_rails() {
     let input = "WEAREDISCOVEREDFLEEATONCE";
     let rails = 3;
@@ -22,7 +21,6 @@ fn encode_with_three_rails() {
 }
 
 #[test]
-#[ignore]
 fn encode_with_ending_in_the_middle() {
     let input = "EXERCISES";
     let rails = 4;
@@ -33,7 +31,6 @@ fn encode_with_ending_in_the_middle() {
 }
 
 #[test]
-#[ignore]
 fn decode_with_three_rails() {
     let input = "TEITELHDVLSNHDTISEIIEA";
     let rails = 3;
@@ -44,7 +41,6 @@ fn decode_with_three_rails() {
 }
 
 #[test]
-#[ignore]
 fn decode_with_five_rails() {
     let input = "EIEXMSMESAORIWSCE";
     let rails = 5;
@@ -55,7 +51,6 @@ fn decode_with_five_rails() {
 }
 
 #[test]
-#[ignore]
 fn decode_with_six_rails() {
     let input = "133714114238148966225439541018335470986172518171757571896261";
     let rails = 6;
@@ -66,7 +61,6 @@ fn decode_with_six_rails() {
 }
 
 #[test]
-#[ignore]
 fn encode_wide_characters() {
     let input = "古池蛙飛び込む水の音";
     let rails = 3;
