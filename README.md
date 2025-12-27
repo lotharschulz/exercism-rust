@@ -2,9 +2,34 @@
 
 I use this repository also to experiment with AI/LLM prompts to solve the exercises.
 
+Prompt within exercis root folder:
+
+```
+# Code Implementation
+
+Implement all _instructions_ defined in `README.md` in the rust file:`src/lib.rs`.
+
+## Enable all tests
+Ensure all tests in the `tests` folder are NOT ignored and enabled. 
+
+## Test the code
+
+Run all tests in the `tests` folder, after the implementation of the all _instructions_ in `src/lib.rs` is done.
+
+
+## Ensure all tests pass
+
+Make sure all tests pass successfully. 
+In case test(s) fail, adapt the code implementation and rerun all tests until all tests pass.
+
+## Improve
+
+Do better. Improve the code implementation and increase readability and reduce code complexity.
+```
+
 ## [Claude Code](https://claudecode.io/)
 
-I used implementing the [diamond challenge](https://exercism.org/tracks/rust/exercises/diamond) and the [largest-series-product](https://exercism.org/tracks/rust/exercises/largest-series-product) exercises. The [.claude](https://github.com/lotharschulz/exercism-rust/tree/main/.claude) folder contains instructions that enable resolved exercises using both [concise](https://github.com/lotharschulz/exercism-rust/commit/7de48659e33c3a8416ee872e5f5f1851e3946f86) and [detailed](https://github.com/lotharschulz/exercism-rust/commit/8c4b24b6b67fd7538d4e8bad9cdd5c35a9952bd0) prompts.
+I used implementing the [diamond challenge](https://exercism.org/tracks/rust/exercises/diamond) and the [largest-series-product](https://exercism.org/tracks/rust/exercises/largest-series-product) exercises. The [.claude](https://github.com/lotharschulz/exercism-rust/tree/main/.claude) folder contains instructions that enable resolved exercises.
 
 ## [Copilot coding agent](https://docs.github.com/en/copilot/concepts/coding-agent/coding-agent)
 
@@ -12,73 +37,18 @@ I used implementing the [Crypto Square](https://github.com/lotharschulz/exercism
 
 An earlier attempt was implementing the [Wordy Exercise](https://github.com/lotharschulz/exercism-rust/issues/1). During this implementation, the Copilot agent detects that no Copilot instructions were present in the repository and flagged this through a [PR comment](https://github.com/lotharschulz/exercism-rust/pull/2#issuecomment-3261479075). This led to the creation of a dedicated issue:: [✨ Set up Copilot instructions](https://github.com/lotharschulz/exercism-rust/issues/3).
 
-With those instructions in place, I proceeded to implement the [custom-set exercise](https://github.com/lotharschulz/exercism-rust/issues/5). Interestingly, the existing Exercism tests and instructions were already so comprehensive and well-structured that adding Copilot instructions didn’t significantly enhance the development experience. In both the Wordy and Custom Set exercises, the quality of the Exercism framework proved to be the dominant factor.
+With those instructions in place, I proceeded to implement the [custom-set exercise](https://github.com/lotharschulz/exercism-rust/issues/5). Interestingly, the existing exercism tests and instructions were already so comprehensive and well-structured that adding Copilot instructions didn’t significantly enhance the development experience. In both the Wordy and Custom Set exercises, the quality of the Exercism framework proved to be the dominant factor.
 
 ## [Windsurf IDE](https://windsurf.com/editor)
 
-Windsurf IDE successfully solved the [luhn-from](https://exercism.org/tracks/rust/exercises/luhn-from) and [atbash-cipher](https://github.com/lotharschulz/exercism-rust/tree/main/atbash-cipher) exercise using the following prompt:
-
-```
-# Code Implementation
-
-Implement all _instructions_ defined in `atbash-cipher/README.md` (`luhn-from/README.md`)  in the rust file:`atbash-cipher/src/lib.rs` (`luhn-from/src/lib.rs`) .
-
-## Enable all tests
-Ensure all tests in the `atbash-cipher/tests` (`luhn-from/tests`)  folder are NOT ignored and enabled. 
-
-## Test the code
-
-Run all tests in the `atbash-cipher/tests` (`luhn-from/tests`)  folder, after the implementation of the all _instructions_ in `atbash-cipher/src/lib.rs` (`luhn-from/src/lib.rs`)  is done.
-
-
-## Ensure all tests pass
-
-Make sure all tests pass successfully. 
-In case test(s) fail, adapt the code implementation and rerun all tests until all tests pass.
-
-## Improve
-
-Do better. Improve the code implementation and increase readability and reduce code complexity.
-```
-
-Also Windsurf solved the [luhn-trait](https://exercism.org/tracks/rust/exercises/luhn-trait) exercise with a much smaller prompt:
-
-```
-Implement all _instructions_ defined in luhn-trait/README.md  in the rust file:luhn-trait/src/lib.rs .
-```
-
-I noticed differences in the quality of the results, but in my observation independent from the prompt. 
-The smaller prompt cause an implementation that passed all criteria with the first iteration ([840b6e6](https://github.com/lotharschulz/exercism-rust/commit/840b6e6da97d89f67c536448c73e4bfd76f796e7)). One of the bigger prompts triggered runs, resulted in an implementation including clippy findings ([87ab5ab](https://github.com/lotharschulz/exercism-rust/commit/87ab5ab35e2f0702c72310f53ca28363e1bc660f))
+Windsurf IDE successfully solved the [luhn-from](https://exercism.org/tracks/rust/exercises/luhn-from) and [atbash-cipher](https://github.com/lotharschulz/exercism-rust/tree/main/atbash-cipher) exercise.
+Also Windsurf solved the [luhn-trait](https://exercism.org/tracks/rust/exercises/luhn-trait) exercise with a much smaller previous version of the prompt.
 
 ## [Cursor IDE](docs.cursor.com)
 
-Cursor IDE successfully solved the [accumulate](https://github.com/lotharschulz/exercism-rust/tree/main/accumulate) and [list-ops](https://exercism.org/tracks/rust/exercises/list-ops)  exercise using its agent mode with the following structured prompt:
+Cursor IDE successfully solved the [accumulate](https://github.com/lotharschulz/exercism-rust/tree/main/accumulate) and [list-ops](https://exercism.org/tracks/rust/exercises/list-ops) exercise using its agent.
 
-```
-# Code Implementation
-
-Implement all _instructions_ defined in `accumulate/README.md` in the rust file:`accumulate/src/lib.rs`.
-
-## Enable all tests
-Ensure all tests in the `accumulate/tests` folder are NOT ignored and enabled. 
-
-## Test the code
-
-Run all tests in the `accumulate/tests` folder, after the implementation of the all _instructions_ in `accumulate/src/lib.rs` is done.
-
-
-## Ensure all tests pass
-
-Make sure all tests pass successfully. 
-In case test(s) fail, adapt the code implementation and rerun all tests until all tests pass.
-
-## Improve
-
-Do better. Improve the code implementation and increase readability and reduce code complexity.
-```
-(replace 'accumulate' with 'list-ops' in ^^^ for the phone number exercise)
-
-The result worked and was good code, still in one case cause clippy warnings ([ba72c13](https://github.com/lotharschulz/exercism-rust/commit/ba72c13b4d45ca0a7babab5c5212511a9b4d851c)).
+The result worked and was good code, still in one case clippy caused warnings ([ba72c13](https://github.com/lotharschulz/exercism-rust/commit/ba72c13b4d45ca0a7babab5c5212511a9b4d851c)).
 
 A much smaller prompt:
 ```
@@ -159,140 +129,3 @@ to scaffold when exploring performance changes:
 ```
 .github/scripts/inject_benchmark.sh <exercise> <function>
 ```
-
-## [copilot agent mode](https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/)
-
-### model: GPT 4.1
-
-##### Context
-
-- exercism exercise folder
-
-##### Prompt
-
-```
-Implement all TODOs in 'src/lib.rs'.
-Ensure all tests in the 'tests' folder are NOT ignored and enabled. 
-After the implementation of the all TODOs in 'src/lib.rs', run the tests in the 'tests' folder.
-Make sure all tests in the 'tests' folder pass successfully. 
-In case tests fail, adapt the implementation and continue with running tests and subsequent code implementation in case tests fail until all tests pass.
-```
-
-This setup created all changes of [044f6c3](https://github.com/lotharschulz/exercism-rust/commit/044f6c3640b75a14d3108f3160a1150f5c1c1a19) that passed all tests.
-
-
-### model: Claude 3.7 Sonnet
-
-##### Context
-
-- exercism exercise folder
-
-##### Prompt
-
-```
-Implement all TODOs in 'src/lib.rs'.
-Ensure all tests in the 'tests' folder are NOT ignored and enabled. 
-After the implementation of the all TODOs in 'src/lib.rs', run the tests in the 'tests' folder.
-Make sure all tests in the 'tests' folder pass successfully.
-
-Run test like so "cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check"
-
-In case tests fail, adapt the implementation and continue with running tests and subsequent code implementation in case tests fail until all tests pass.
-```
-
-This setup created all changes of [987c7cc](https://github.com/lotharschulz/exercism-rust/commit/987c7ccf03b71a029a5ae2389c2cb97f57f859b5) that passed all tests and resulted in formatted code.
-
-
-
-## [copilot edits](https://code.visualstudio.com/docs/copilot/copilot-edits)
-
-### model: Claude Sonnet 4
-
-##### Context
-
-- exercism exercise folder
-
-##### Prompt
-
-```
-Implement all TODOs in 'src/lib.rs'.
-Ensure all tests in the 'tests' folder are NOT ignored and enabled.
-After the implementation of the all TODOs in 'src/lib.rs', run the tests in the 'tests' folder.
-Make sure all tests in the 'tests' folder pass successfully.
-In case tests fail, adapt the implementation and continue with running tests and subsequent code implementation in case tests fail until all tests pass.
-```
-
-This setup created all changes of [98ebce4](https://github.com/lotharschulz/exercism-rust/commit/98ebce4d36b06e36ee0f0fa75367eff968995258) that passed all tests.
-
-### model: GPT 4o
-
-##### Context
-
- `lib.rs`
-
-##### Prompt
-
-```
-Make also sure that all tests in 'tests' folder are active - no tests ignored. 
-Implement the todos in libr.rs. 
-When implementing make sure all tests in 'tests' folder pass succesfully. 
-```
-
-This setup created all changes of [df4e27c](https://github.com/lotharschulz/exercism-rust/commit/df4e27c10cff8a3e650e3c853c51bf72b58b65b0) that passed all tests.
-
-### models: Claude 3.7 Sonnet & Claude 3.7 Sonnet Thinking
-
-##### Context 
-- `xxx.rs` test file 
-   and 
-- `lib.rs` task file
-
-##### Prompt
-
-```
-Ensure all tests in the 'tests' folder are active and none are ignored. 
-Implement the TODOs in 'src/lib.rs'. 
-After the implementation of the TODOs 'src/lib.rs', run the tests in the 'tests' folder.
-Make sure all tests in the 'tests' folder pass successfully. 
-In case tests fail, adapt the implementation.
-```
-
-This setup with Claude 3.7 Sonnet created all changes for [7cfd77c](https://github.com/lotharschulz/exercism-rust/commit/7cfd77cd51645e1bfe96fae48ed026856678ab46) that passes all tests.
-
-This setup with Claude 3.7 Sonnet Thinking created all changes of [4d45abe](https://github.com/lotharschulz/exercism-rust/commit/4d45abee64e399763c8b6d23b355ddf996d9872b) that passed all tests.
-
-### model: Claude 3.5 Sonnet
-
-The following prompt with the folder and lib.rs added to the context:
-
-##### Context
-
-`lib.rs` plus the whole exercism task folder 
-
-##### Prompt
-
-```
-Ensure all tests in the 'tests' folder are active and none are ignored. 
-Implement the TODOs in 'src/lib.rs'. 
-After the implementation of the TODOs 'src/lib.rs', run the tests in the 'tests' folder.
-Make sure all tests in the 'tests' folder pass successfully. 
-In case tests fail, adapt the implementation.
-```
-
-created all changes of [b091d88](https://github.com/lotharschulz/exercism-rust/commit/b091d88b74cd2a18fc4e581422726b29263bb286) that passed all tests.
-
-### model: Gemini 2.5 Pro (Preview)
-
-- exercism exercise folder
-
-##### Prompt
-
-```
-Implement all TODOs in 'src/lib.rs'.
-Ensure all tests in the 'tests' folder are NOT ignored and enabled.
-After the implementation of the all TODOs in 'src/lib.rs', run the tests in the 'tests' folder.
-Make sure all tests in the 'tests' folder pass successfully.
-In case tests fail, adapt the implementation and continue with running tests and subsequent code implementation in case tests fail until all tests pass.
-```
-
-This setup created all changes of [b388327](https://github.com/lotharschulz/exercism-rust/commit/b3883279594d6269e43581729610954d6e9cccd6) that passed all tests.
