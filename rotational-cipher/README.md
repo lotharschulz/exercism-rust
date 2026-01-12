@@ -60,8 +60,6 @@ Ciphertext is written out in the same formatting as the input including spaces a
 
 Wikipedia - https://en.wikipedia.org/wiki/Caesar_cipher
 
-
-
 ### Verification
 
 ```sh
