@@ -2,7 +2,7 @@
 
 I use this repository also to experiment with AI/LLM prompts to solve the exercises.
 
-Prompt within exercis root folder:
+Prompt within exercise root folder:
 
 ```
 # Code Implementation
