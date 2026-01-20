@@ -13,7 +13,7 @@ use std::collections::HashMap;
 ///
 /// ```
 /// use std::collections::HashMap;
-/// let counts = word_count("Hello, hello!");
+/// let counts = word_count::word_count("Hello, hello!");
 /// assert_eq!(counts.get("hello"), Some(&2));
 /// ```
 pub fn word_count(words: &str) -> HashMap<String, u32> {
