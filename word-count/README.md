@@ -96,3 +96,9 @@ the: 2
 ### Based on
 
 This is a classic toy problem, but we were reminded of it by seeing it in the Go Tour.
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
