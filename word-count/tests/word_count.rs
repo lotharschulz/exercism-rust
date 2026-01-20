@@ -12,7 +12,6 @@ fn count_one_word() {
 }
 
 #[test]
-#[ignore]
 fn count_one_of_each_word() {
     let input = "one of each";
     let mut output = word_count(input);
@@ -24,7 +23,6 @@ fn count_one_of_each_word() {
 }
 
 #[test]
-#[ignore]
 fn multiple_occurrences_of_a_word() {
     let input = "one fish two fish red fish blue fish";
     let mut output = word_count(input);
@@ -36,7 +34,6 @@ fn multiple_occurrences_of_a_word() {
 }
 
 #[test]
-#[ignore]
 fn handles_cramped_lists() {
     let input = "one,two,three";
     let mut output = word_count(input);
@@ -48,7 +45,6 @@ fn handles_cramped_lists() {
 }
 
 #[test]
-#[ignore]
 fn handles_expanded_lists() {
     let input = "one,\ntwo,\nthree";
     let mut output = word_count(input);
@@ -60,7 +56,6 @@ fn handles_expanded_lists() {
 }
 
 #[test]
-#[ignore]
 fn ignore_punctuation() {
     let input = "car: carpet as java: javascript!!&@$%^&";
     let mut output = word_count(input);
@@ -78,7 +73,6 @@ fn ignore_punctuation() {
 }
 
 #[test]
-#[ignore]
 fn include_numbers() {
     let input = "testing, 1, 2 testing";
     let mut output = word_count(input);
@@ -90,7 +84,6 @@ fn include_numbers() {
 }
 
 #[test]
-#[ignore]
 fn normalize_case() {
     let input = "go Go GO Stop stop";
     let mut output = word_count(input);
@@ -102,7 +95,6 @@ fn normalize_case() {
 }
 
 #[test]
-#[ignore]
 fn with_apostrophes() {
     let input = "'First: don't laugh. Then: don't cry. You're getting it.'";
     let mut output = word_count(input);
@@ -123,7 +115,6 @@ fn with_apostrophes() {
 }
 
 #[test]
-#[ignore]
 fn with_quotations() {
     let input = "Joe can't tell between 'large' and large.";
     let mut output = word_count(input);
