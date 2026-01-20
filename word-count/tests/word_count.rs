@@ -133,7 +133,6 @@ fn with_quotations() {
 }
 
 #[test]
-#[ignore]
 fn substrings_from_the_beginning() {
     let input = "Joe can't tell between app, apple and a.";
     let mut output = word_count(input);
@@ -154,7 +153,6 @@ fn substrings_from_the_beginning() {
 }
 
 #[test]
-#[ignore]
 fn multiple_spaces_not_detected_as_a_word() {
     let input = " multiple   whitespaces";
     let mut output = word_count(input);
@@ -166,7 +164,6 @@ fn multiple_spaces_not_detected_as_a_word() {
 }
 
 #[test]
-#[ignore]
 fn alternating_word_separators_not_detected_as_a_word() {
     let input = ",\n,one,\n ,two \n 'three'";
     let mut output = word_count(input);
@@ -178,7 +175,6 @@ fn alternating_word_separators_not_detected_as_a_word() {
 }
 
 #[test]
-#[ignore]
 fn quotation_for_word_with_apostrophe() {
     let input = "can, can't, 'can't'";
     let mut output = word_count(input);
