@@ -53,3 +53,9 @@ She cannot get more than 90 as her knapsack has a weight limit of 10.
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Knapsack_problem
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
