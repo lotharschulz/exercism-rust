@@ -5,17 +5,27 @@ pub struct Item {
 }
 
 pub fn maximum_value(max_weight: u32, items: &[Item]) -> u32 {
-    let n = items.len();
-    let mut dp = vec![vec![0; (max_weight + 1) as usize]; n + 1];
-    for i in 1..=n {
-        for w in 0..=max_weight {
-            if items[i - 1].weight <= w {
-                dp[i][w as usize] = dp[i - 1][(w - items[i - 1].weight) as usize]
-                    .max(dp[i - 1][w as usize] + items[i - 1].value);
-            } else {
-                dp[i][w as usize] = dp[i - 1][w as usize];
-            }
+    // Recursive solution
+    items.iter().enumerate().map(|(index, item)| { 
+        if item.weight <= max_weight {
+            maximum_value(max_weight - item.weight, &items[index+1..]) + item.value
+        } else {
+            0
         }
-    }
-    dp[n][max_weight as usize]
+    }).max().unwrap_or(0)
+
+    // Dynamic programming solution (commented out)
+    // let n = items.len();
+    // let mut dp = vec![vec![0; (max_weight + 1) as usize]; n + 1];
+    // for i in 1..=n {
+    //     for w in 0..=max_weight {
+    //         if items[i - 1].weight <= w {
+    //             dp[i][w as usize] = dp[i - 1][(w - items[i - 1].weight) as usize]
+    //                 .max(dp[i - 1][w as usize] + items[i - 1].value);
+    //         } else {
+    //             dp[i][w as usize] = dp[i - 1][w as usize];
+    //         }
+    //     }
+    // }
+    // dp[n][max_weight as usize]
 }
