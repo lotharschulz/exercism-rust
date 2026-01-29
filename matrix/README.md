@@ -76,3 +76,9 @@ Exercise by the JumpstartLab team for students at The Turing School of Software 
 ```sh
 cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
 ```
+
+#### run ignored tests as well
+
+```
+cargo test -- --include-ignored
+```
