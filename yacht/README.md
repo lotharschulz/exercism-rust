@@ -56,6 +56,8 @@ A _Yacht_ scores zero if entered in the _Full House_ category.
 
 James Kilfiger, using Wikipedia - https://en.wikipedia.org/wiki/Yacht_(dice_game)
 
+### Verification
+
 ```sh
 cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
 ```
