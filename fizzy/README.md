@@ -36,3 +36,15 @@ We're going to do something more interesting than the basics: your task in this 
 ### Based on
 
 Peter Goodspeed-Niklaus - https://github.com/coriolinus/fizzy
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
+
+#### run ignored tests as well
+
+```
+cargo test -- --include-ignored
+```
