@@ -1,47 +1,106 @@
-// the PhantomData instances in this file are just to stop compiler complaints
-// about missing generics; feel free to remove them
+use std::fmt::Display;
+use std::ops::Rem;
 
-/// A Matcher is a single rule of fizzbuzz: given a function on T, should
-/// a word be substituted in? If yes, which word?
-pub struct Matcher<T>(std::marker::PhantomData<T>);
+/// A Matcher represents a single FizzBuzz rule: a predicate function and its substitution word.
+/// When the predicate returns true for a given value, the substitution is included in the output.
+pub struct Matcher<T> {
+    // Boxed trait object to store the matcher function dynamically
+    matcher: Box<dyn Fn(T) -> bool>,
+    // The substitution string to use when the matcher returns true
+    subs: String,
+}
 
 impl<T> Matcher<T> {
-    pub fn new<F, S>(_matcher: F, _subs: S) -> Matcher<T> {
-        todo!()
+    /// Creates a new Matcher with a predicate function and substitution string.
+    ///
+    /// # Arguments
+    /// * `matcher` - A function that tests if a value should trigger this substitution
+    /// * `subs` - The string to substitute when the matcher returns true
+    pub fn new<F, S>(matcher: F, subs: S) -> Matcher<T>
+    where
+        F: Fn(T) -> bool + 'static,
+        S: Into<String>,
+    {
+        Matcher {
+            // Box the function for dynamic dispatch
+            matcher: Box::new(matcher),
+            // Convert the substitution to a String
+            subs: subs.into(),
+        }
     }
 }
 
-/// A Fizzy is a set of matchers, which may be applied to an iterator.
-///
-/// Strictly speaking, it's usually more idiomatic to use `iter.map()` than to
-/// consume an iterator with an `apply` method. Given a Fizzy instance, it's
-/// pretty straightforward to construct a closure which applies it to all
-/// elements of the iterator. However, we're using the `apply` pattern
-/// here because it's a simpler interface for students to implement.
-///
-/// Also, it's a good excuse to try out using impl trait.
-pub struct Fizzy<T>(std::marker::PhantomData<T>);
+/// A Fizzy is a collection of Matchers that can be applied to an iterator.
+/// It processes each element, applying all matchers and concatenating their substitutions.
+pub struct Fizzy<T> {
+    // Vector of matchers to apply in order
+    matchers: Vec<Matcher<T>>,
+}
 
 impl<T> Fizzy<T> {
+    /// Creates a new empty Fizzy with no matchers.
     pub fn new() -> Self {
-        todo!()
+        Fizzy {
+            matchers: Vec::new(),
+        }
     }
 
-    // feel free to change the signature to `mut self` if you like
+    /// Adds a matcher to this Fizzy and returns the updated Fizzy (builder pattern).
+    /// The matcher will be applied in the order it was added.
     #[must_use]
-    pub fn add_matcher(self, _matcher: Matcher<T>) -> Self {
-        todo!()
+    pub fn add_matcher(mut self, matcher: Matcher<T>) -> Self {
+        self.matchers.push(matcher);
+        self
     }
 
-    /// map this fizzy onto every element of an iterator, returning a new iterator
-    pub fn apply<I>(self, _iter: I) -> impl Iterator<Item = String> {
-        // todo!() doesn't actually work, here; () is not an Iterator
-        // that said, this is probably not the actual implementation you desire
-        Vec::new().into_iter()
+    /// Applies all matchers to each element of an iterator, returning a new iterator of Strings.
+    ///
+    /// For each element:
+    /// - All matching substitutions are concatenated in order
+    /// - If no matchers match, the element is converted to a string using Display
+    pub fn apply<I>(self, iter: I) -> impl Iterator<Item = String>
+    where
+        I: Iterator<Item = T>,
+        T: Display + Copy,
+    {
+        // Move matchers into the closure to avoid lifetime issues
+        let matchers = self.matchers;
+        iter.map(move |item| {
+            let mut result = String::new();
+            // Apply each matcher in sequence
+            for matcher in &matchers {
+                if (matcher.matcher)(item) {
+                    // Concatenate all matching substitutions
+                    result.push_str(&matcher.subs);
+                }
+            }
+            // If no matchers matched, return the number itself
+            if result.is_empty() {
+                item.to_string()
+            } else {
+                result
+            }
+        })
     }
 }
 
-/// convenience function: return a Fizzy which applies the standard fizz-buzz rules
-pub fn fizz_buzz<T>() -> Fizzy<T> {
-    todo!()
+impl<T> Default for Fizzy<T> {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+/// Convenience function that returns a Fizzy with standard FizzBuzz rules:
+/// - "fizz" for multiples of 3
+/// - "buzz" for multiples of 5
+/// - "fizzbuzz" for multiples of both (15)
+pub fn fizz_buzz<T>() -> Fizzy<T>
+where
+    T: Rem<Output = T> + From<u8> + PartialEq + Copy + Display + 'static,
+{
+    Fizzy::new()
+        // Add fizz matcher first (divisible by 3)
+        .add_matcher(Matcher::new(|n: T| n % 3.into() == 0.into(), "fizz"))
+        // Add buzz matcher second (divisible by 5)
+        .add_matcher(Matcher::new(|n: T| n % 5.into() == 0.into(), "buzz"))
 }
