@@ -48,3 +48,16 @@ cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo cli
 ```
 cargo test -- --include-ignored
 ```
+
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
+
+#### run ignored tests as well
+
+```
+cargo test -- --include-ignored
+```
