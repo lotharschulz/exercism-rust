@@ -76,3 +76,16 @@ For example, with N = 1000, there is exactly one Pythagorean triplet for which `
 ### Based on
 
 A variation of Problem 9 from Project Euler - https://projecteuler.net/problem=9
+
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
+
+#### run ignored tests as well
+
+```
+cargo test -- --include-ignored
+```
