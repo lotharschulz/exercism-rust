@@ -1,16 +1,17 @@
 use std::collections::HashSet;
 
 pub fn find(sum: u32) -> HashSet<[u32; 3]> {
-    let mut triplets = HashSet::new();
-
-    for a in 1..=sum / 3 {
-        for b in a..=(sum - a) / 2 {
-            let c = sum - a - b;
-            if a * a + b * b == c * c {
-                triplets.insert([a, b, c]);
-            }
-        }
-    }
-
-    triplets
+    (1..=sum / 3)
+        .flat_map(|a| {
+            (a..=(sum - a) / 2).map(move |b| {
+                let c = sum - a - b;
+                if a * a + b * b == c * c {
+                    Some([a, b, c])
+                } else {
+                    None
+                }
+            })
+        })
+        .flatten()
+        .collect()
 }
