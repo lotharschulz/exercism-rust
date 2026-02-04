@@ -5,7 +5,7 @@ pub fn frequency(input: &[&str], worker_count: usize) -> HashMap<char, usize> {
         return HashMap::new();
     }
 
-    let chunk_size = (input.len() + worker_count - 1) / worker_count;
+    let chunk_size = input.len().div_ceil(worker_count);
 
     crossbeam::scope(|scope| {
         let handles: Vec<_> = input
