@@ -62,3 +62,15 @@ Note that the [`maplit` crate](https://crates.io/crates/maplit) provides a macro
 ### Based on
 
 Peter Goodspeed-Niklaus
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
+
+#### run ignored tests as well
+
+```
+cargo test -- --include-ignored
+```
