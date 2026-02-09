@@ -1,8 +1,8 @@
-/// To activate a doctest locally, remove ",ignore" from the code block.
+/// To activate a doctest locally, remove "" from the code block.
 ///
 /// # Comma separator
 ///
-/// ```compile_fail,ignore
+/// ```compile_fail
 /// use macros::hashmap;
 /// use std::collections::HashMap;
 ///
@@ -12,7 +12,7 @@
 ///
 /// # Double trailing commas
 ///
-/// ```compile_fail,ignore
+/// ```compile_fail
 /// use macros::hashmap;
 /// use std::collections::HashMap;
 ///
@@ -22,7 +22,7 @@
 ///
 /// # Only comma
 ///
-/// ```compile_fail,ignore
+/// ```compile_fail
 /// use macros::hashmap;
 /// use std::collections::HashMap;
 ///
@@ -32,7 +32,7 @@
 ///
 /// # Single argument
 ///
-/// ```compile_fail,ignore
+/// ```compile_fail
 /// use macros::hashmap;
 /// use std::collections::HashMap;
 ///
@@ -42,7 +42,7 @@
 ///
 /// # Triple arguments
 ///
-/// ```compile_fail,ignore
+/// ```compile_fail
 /// use macros::hashmap;
 /// use std::collections::HashMap;
 ///
@@ -52,7 +52,7 @@
 ///
 /// # Only arrow
 ///
-/// ```compile_fail,ignore
+/// ```compile_fail
 /// use macros::hashmap;
 /// use std::collections::HashMap;
 ///
@@ -62,7 +62,7 @@
 ///
 /// # Trailing arrow
 ///
-/// ```compile_fail,ignore
+/// ```compile_fail
 /// use macros::hashmap;
 /// use std::collections::HashMap;
 ///
@@ -72,7 +72,7 @@
 ///
 /// # Leading comma
 ///
-/// ```compile_fail,ignore
+/// ```compile_fail
 /// use macros::hashmap;
 /// use std::collections::HashMap;
 ///
@@ -82,7 +82,7 @@
 ///
 /// # Missing comma
 ///
-/// ```compile_fail,ignore
+/// ```compile_fail
 /// use macros::hashmap;
 /// use std::collections::HashMap;
 ///
@@ -92,7 +92,7 @@
 ///
 /// # Missing argument
 ///
-/// ```compile_fail,ignore
+/// ```compile_fail
 /// use macros::hashmap;
 /// use std::collections::HashMap;
 ///

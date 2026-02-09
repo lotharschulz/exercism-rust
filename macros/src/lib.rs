@@ -1,7 +1,34 @@
 #[macro_export]
 macro_rules! hashmap {
+    // Rule 1: Handle empty hashmap - hashmap!()
     () => {
-        todo!()
+        {
+            let mut hm = ::std::collections::HashMap::new();
+            hm
+        }
+    };
+    // Rule 2: Handle one or more key-value pairs without trailing comma
+    // Pattern: ($(...),+) means one or more comma-separated items
+    ($($key:expr => $value:expr),+) => {
+        {
+            let mut hm = ::std::collections::HashMap::new();
+            // $(...)*  repeats the inner code for each matched key-value pair
+            $(
+                hm.insert($key, $value);
+            )*
+            hm
+        }
+    };
+    // Rule 3: Handle one or more key-value pairs with trailing comma
+    // This allows: hashmap!(k => v, k => v,) but rejects: hashmap!(k => v, ,)
+    ($($key:expr => $value:expr),+,) => {
+        {
+            let mut hm = ::std::collections::HashMap::new();
+            $(
+                hm.insert($key, $value);
+            )*
+            hm
+        }
     };
 }
 
