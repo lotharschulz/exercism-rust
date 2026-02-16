@@ -61,3 +61,16 @@ Two trees must compare as equal independent of the children's order.
 ### Based on
 
 Adaptation of exercise from 4clojure - https://github.com/oxalorg/4ever-clojure
+
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
+
+#### run ignored tests as well
+
+```
+cargo test -- --include-ignored
+```
