@@ -38,3 +38,15 @@ See [Wikipedia][poker-hands] for an overview of poker hands.
 ### Based on
 
 Inspired by the training course from Udacity. - https://www.udacity.com/course/design-of-computer-programs--cs212
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
+
+#### run ignored tests as well
+
+```
+cargo test -- --include-ignored
+```
