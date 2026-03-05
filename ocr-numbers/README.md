@@ -85,3 +85,15 @@ The following input is converted to `"123,456,789"`.
 ### Based on
 
 Inspired by the Bank OCR kata - https://codingdojo.org/kata/BankOCR/
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
+
+#### run ignored tests as well
+
+```
+cargo test -- --include-ignored
+```
