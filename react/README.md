@@ -37,3 +37,16 @@ Call a cell’s callbacks when the cell’s value in a new stable state has chan
 - @stringparser
 - @xakon
 - @ZapAnton
+
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
+
+#### run ignored tests as well
+
+```
+cargo test -- --include-ignored
+```
