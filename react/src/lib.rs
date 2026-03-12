@@ -36,16 +36,19 @@ pub enum RemoveCallbackError {
     NonexistentCallback,
 }
 
+type ComputeFunc<'a, T> = Box<dyn Fn(&[T]) -> T + 'a>;
+type Callback<'a, T> = Box<dyn FnMut(T) + 'a>;
+
 struct ComputeCell<'a, T> {
     value: T,
     dependencies: Vec<CellId>,
-    compute_func: Box<dyn Fn(&[T]) -> T + 'a>,
+    compute_func: ComputeFunc<'a, T>,
 }
 
 pub struct Reactor<'a, T> {
     input_cells: HashMap<InputCellId, T>,
     compute_cells: HashMap<ComputeCellId, ComputeCell<'a, T>>,
-    callbacks: HashMap<ComputeCellId, HashMap<CallbackId, Box<dyn FnMut(T) + 'a>>>,
+    callbacks: HashMap<ComputeCellId, HashMap<CallbackId, Callback<'a, T>>>,
     next_input_id: usize,
     next_compute_id: usize,
     next_callback_id: usize,
@@ -121,7 +124,9 @@ impl<'a, T: Copy + PartialEq + 'a> Reactor<'a, T> {
     pub fn value(&self, id: CellId) -> Option<T> {
         match id {
             CellId::Input(input_id) => self.input_cells.get(&input_id).copied(),
-            CellId::Compute(compute_id) => self.compute_cells.get(&compute_id).map(|cell| cell.value),
+            CellId::Compute(compute_id) => {
+                self.compute_cells.get(&compute_id).map(|cell| cell.value)
+            }
         }
     }
 
@@ -135,7 +140,7 @@ impl<'a, T: Copy + PartialEq + 'a> Reactor<'a, T> {
         }
 
         self.input_cells.insert(id, new_value);
-        
+
         // Save old values of all compute cells before propagation
         let old_values: HashMap<ComputeCellId, T> = self
             .compute_cells
@@ -149,13 +154,12 @@ impl<'a, T: Copy + PartialEq + 'a> Reactor<'a, T> {
         // Call callbacks for cells that changed
         for (&id, &old_value) in &old_values {
             let new_value = self.compute_cells[&id].value;
-            if new_value != old_value {
-                if let Some(callbacks) = self.callbacks.get_mut(&id) {
-                    let callback_ids: Vec<_> = callbacks.keys().copied().collect();
-                    for cb_id in callback_ids {
-                        if let Some(callback) = callbacks.get_mut(&cb_id) {
-                            callback(new_value);
-                        }
+            if new_value != old_value && self.callbacks.contains_key(&id) {
+                let callbacks = self.callbacks.get_mut(&id).unwrap();
+                let callback_ids: Vec<_> = callbacks.keys().copied().collect();
+                for cb_id in callback_ids {
+                    if let Some(callback) = callbacks.get_mut(&cb_id) {
+                        callback(new_value);
                     }
                 }
             }
@@ -189,7 +193,7 @@ impl<'a, T: Copy + PartialEq + 'a> Reactor<'a, T> {
 
         self.callbacks
             .entry(id)
-            .or_insert_with(HashMap::new)
+            .or_default()
             .insert(callback_id, Box::new(callback));
 
         Some(callback_id)
@@ -256,7 +260,7 @@ impl<'a, T: Copy + PartialEq + 'a> Reactor<'a, T> {
         let old_value = self.compute_cells[&id].value;
 
         // Save the dependencies and compute function before we need to borrow mutably
-        let (dependencies, new_value) = {
+        let (_dependencies, new_value) = {
             let cell = &self.compute_cells[&id];
             let dependencies = cell.dependencies.clone();
             let values = self.get_dependency_values(&dependencies);
