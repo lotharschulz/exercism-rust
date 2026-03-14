@@ -93,3 +93,15 @@ Because there is space available, if the client again uses overwrite to store C 
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Circular_buffer
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
+
+#### run ignored tests as well
+
+```
+cargo test -- --include-ignored
+```
