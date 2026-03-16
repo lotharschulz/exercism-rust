@@ -54,9 +54,8 @@ impl<T> CircularBuffer<T> {
 
     /// Clears the buffer, dropping all elements.
     pub fn clear(&mut self) {
-        self.buffer.clear();
-        for _ in 0..self.capacity {
-            self.buffer.push(None);
+        for item in &mut self.buffer {
+            *item = None;
         }
         self.head = 0;
         self.tail = 0;
