@@ -93,3 +93,16 @@ You may assume that the input is always a proper rectangle (i.e. the length of e
 - @stringparser
 - @xakon
 - @ZapAnton
+
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
+
+#### run ignored tests as well
+
+```
+cargo test -- --include-ignored
+```
