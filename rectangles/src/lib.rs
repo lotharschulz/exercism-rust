@@ -24,7 +24,7 @@ pub fn count(lines: &[&str]) -> u32 {
                     let horizontal_ok = (left + 1..right).all(|jj| {
                         let top_cell = grid[top][jj];
                         let bottom_cell = grid[bottom][jj];
-                        (top_cell == '-' || top_cell == '+') 
+                        (top_cell == '-' || top_cell == '+')
                             && (bottom_cell == '-' || bottom_cell == '+')
                     });
                     if horizontal_ok {
