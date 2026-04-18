@@ -111,3 +111,15 @@ the solution using `Iterator` combinators directly.
 ### Based on
 
 Peter Goodspeed-Niklaus
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
+
+#### run ignored tests as well
+
+```
+cargo test -- --include-ignored
+```
