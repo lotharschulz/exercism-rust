@@ -13,7 +13,7 @@ fn munge_in_place_identity() {
 }
 
 #[test]
-#[ignore]
+
 fn munge_in_place_roundtrip() {
     let mut xs1 = Xorcism::new(&[1, 2, 3, 4, 5]);
     let mut xs2 = Xorcism::new(&[1, 2, 3, 4, 5]);
@@ -27,7 +27,7 @@ fn munge_in_place_roundtrip() {
 }
 
 #[test]
-#[ignore]
+
 fn munge_in_place_stateful() {
     let mut xs = Xorcism::new(&[1, 2, 3, 4, 5]);
     let input = "This is super-secret, cutting edge encryption, folks.".as_bytes();
@@ -43,7 +43,7 @@ fn munge_in_place_stateful() {
 }
 
 #[test]
-#[ignore]
+
 fn munge_identity() {
     let mut xs = Xorcism::new(&[0]);
     let data = "This is super-secret, cutting edge encryption, folks.";
@@ -55,7 +55,7 @@ fn munge_identity() {
 }
 
 #[test]
-#[ignore]
+
 fn statefulness() {
     // we expect Xorcism to be stateful: at the end of a munging run, the key has rotated.
     // this means that until the key has completely rotated around, equal inputs will produce
@@ -90,7 +90,7 @@ mod key_shorter_than_data {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             // we transform the input into a `Vec<u8>` despite its presence in this
             // module because of the more restricted syntax that this function accepts
@@ -111,7 +111,7 @@ mod key_shorter_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let mut xorcism = Xorcism::new(KEY);
             let result: Vec<u8> = xorcism.munge(INPUT.as_bytes()).collect();
@@ -121,7 +121,7 @@ mod key_shorter_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let mut xorcism1 = Xorcism::new(KEY);
             let mut xorcism2 = xorcism1.clone();
@@ -136,7 +136,7 @@ mod key_shorter_than_data {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let key = KEY.as_bytes();
 
@@ -159,7 +159,7 @@ mod key_shorter_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -172,7 +172,7 @@ mod key_shorter_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -190,7 +190,7 @@ mod key_shorter_than_data {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let mut input = INPUT.as_bytes().to_vec();
             let original = input.clone();
@@ -209,7 +209,7 @@ mod key_shorter_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -221,7 +221,7 @@ mod key_shorter_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -238,7 +238,7 @@ mod key_shorter_than_data {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn reader_munges() {
             let mut reader = Xorcism::new(KEY).reader(INPUT.as_bytes());
             let mut buf = Vec::with_capacity(INPUT.len());
@@ -248,7 +248,7 @@ mod key_shorter_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn reader_roundtrip() {
             let xs = Xorcism::new(KEY);
             let reader1 = xs.clone().reader(INPUT.as_bytes());
@@ -260,7 +260,7 @@ mod key_shorter_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_munges() {
             let mut writer_dest = Vec::new();
             {
@@ -271,7 +271,7 @@ mod key_shorter_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_roundtrip() {
             let mut writer_dest = Vec::new();
             let xs = Xorcism::new(KEY);
@@ -301,7 +301,7 @@ mod key_len_equal_to_data {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             // we transform the input into a `Vec<u8>` despite its presence in this
             // module because of the more restricted syntax that this function accepts
@@ -322,7 +322,7 @@ mod key_len_equal_to_data {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let mut xorcism = Xorcism::new(KEY);
             let result: Vec<u8> = xorcism.munge(INPUT.as_bytes()).collect();
@@ -332,7 +332,7 @@ mod key_len_equal_to_data {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let mut xorcism1 = Xorcism::new(KEY);
             let mut xorcism2 = xorcism1.clone();
@@ -347,7 +347,7 @@ mod key_len_equal_to_data {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let key = KEY.as_bytes();
 
@@ -370,7 +370,7 @@ mod key_len_equal_to_data {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -383,7 +383,7 @@ mod key_len_equal_to_data {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -401,7 +401,7 @@ mod key_len_equal_to_data {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let mut input = INPUT.as_bytes().to_vec();
             let original = input.clone();
@@ -420,7 +420,7 @@ mod key_len_equal_to_data {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -432,7 +432,7 @@ mod key_len_equal_to_data {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -449,7 +449,7 @@ mod key_len_equal_to_data {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn reader_munges() {
             let mut reader = Xorcism::new(KEY).reader(INPUT.as_bytes());
             let mut buf = Vec::with_capacity(INPUT.len());
@@ -459,7 +459,7 @@ mod key_len_equal_to_data {
         }
 
         #[test]
-        #[ignore]
+
         fn reader_roundtrip() {
             let xs = Xorcism::new(KEY);
             let reader1 = xs.clone().reader(INPUT.as_bytes());
@@ -471,7 +471,7 @@ mod key_len_equal_to_data {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_munges() {
             let mut writer_dest = Vec::new();
             {
@@ -482,7 +482,7 @@ mod key_len_equal_to_data {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_roundtrip() {
             let mut writer_dest = Vec::new();
             let xs = Xorcism::new(KEY);
@@ -512,7 +512,7 @@ mod key_longer_than_data {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             // we transform the input into a `Vec<u8>` despite its presence in this
             // module because of the more restricted syntax that this function accepts
@@ -533,7 +533,7 @@ mod key_longer_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let mut xorcism = Xorcism::new(KEY);
             let result: Vec<u8> = xorcism.munge(INPUT.as_bytes()).collect();
@@ -543,7 +543,7 @@ mod key_longer_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let mut xorcism1 = Xorcism::new(KEY);
             let mut xorcism2 = xorcism1.clone();
@@ -558,7 +558,7 @@ mod key_longer_than_data {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let key = KEY.as_bytes();
 
@@ -581,7 +581,7 @@ mod key_longer_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -594,7 +594,7 @@ mod key_longer_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -612,7 +612,7 @@ mod key_longer_than_data {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let mut input = INPUT.as_bytes().to_vec();
             let original = input.clone();
@@ -631,7 +631,7 @@ mod key_longer_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -643,7 +643,7 @@ mod key_longer_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -660,7 +660,7 @@ mod key_longer_than_data {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn reader_munges() {
             let mut reader = Xorcism::new(KEY).reader(INPUT.as_bytes());
             let mut buf = Vec::with_capacity(INPUT.len());
@@ -670,7 +670,7 @@ mod key_longer_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn reader_roundtrip() {
             let xs = Xorcism::new(KEY);
             let reader1 = xs.clone().reader(INPUT.as_bytes());
@@ -682,7 +682,7 @@ mod key_longer_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_munges() {
             let mut writer_dest = Vec::new();
             {
@@ -693,7 +693,7 @@ mod key_longer_than_data {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_roundtrip() {
             let mut writer_dest = Vec::new();
             let xs = Xorcism::new(KEY);
@@ -726,7 +726,7 @@ mod shakespearean {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             // we transform the input into a `Vec<u8>` despite its presence in this
             // module because of the more restricted syntax that this function accepts
@@ -747,7 +747,7 @@ mod shakespearean {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let mut xorcism = Xorcism::new(KEY);
             let result: Vec<u8> = xorcism.munge(INPUT.as_bytes()).collect();
@@ -757,7 +757,7 @@ mod shakespearean {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let mut xorcism1 = Xorcism::new(KEY);
             let mut xorcism2 = xorcism1.clone();
@@ -772,7 +772,7 @@ mod shakespearean {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let key = KEY.as_bytes();
 
@@ -795,7 +795,7 @@ mod shakespearean {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -808,7 +808,7 @@ mod shakespearean {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -826,7 +826,7 @@ mod shakespearean {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let mut input = INPUT.as_bytes().to_vec();
             let original = input.clone();
@@ -845,7 +845,7 @@ mod shakespearean {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -857,7 +857,7 @@ mod shakespearean {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -874,7 +874,7 @@ mod shakespearean {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn reader_munges() {
             let mut reader = Xorcism::new(KEY).reader(INPUT.as_bytes());
             let mut buf = Vec::with_capacity(INPUT.len());
@@ -884,7 +884,7 @@ mod shakespearean {
         }
 
         #[test]
-        #[ignore]
+
         fn reader_roundtrip() {
             let xs = Xorcism::new(KEY);
             let reader1 = xs.clone().reader(INPUT.as_bytes());
@@ -896,7 +896,7 @@ mod shakespearean {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_munges() {
             let mut writer_dest = Vec::new();
             {
@@ -907,7 +907,7 @@ mod shakespearean {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_roundtrip() {
             let mut writer_dest = Vec::new();
             let xs = Xorcism::new(KEY);
@@ -940,7 +940,7 @@ mod comics {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             // we transform the input into a `Vec<u8>` despite its presence in this
             // module because of the more restricted syntax that this function accepts
@@ -961,7 +961,7 @@ mod comics {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let mut xorcism = Xorcism::new(KEY);
             let result: Vec<u8> = xorcism.munge(INPUT.as_bytes()).collect();
@@ -971,7 +971,7 @@ mod comics {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let mut xorcism1 = Xorcism::new(KEY);
             let mut xorcism2 = xorcism1.clone();
@@ -986,7 +986,7 @@ mod comics {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let key = KEY.as_bytes();
 
@@ -1009,7 +1009,7 @@ mod comics {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -1022,7 +1022,7 @@ mod comics {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -1040,7 +1040,7 @@ mod comics {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let mut input = INPUT.as_bytes().to_vec();
             let original = input.clone();
@@ -1059,7 +1059,7 @@ mod comics {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -1071,7 +1071,7 @@ mod comics {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -1088,7 +1088,7 @@ mod comics {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn reader_munges() {
             let mut reader = Xorcism::new(KEY).reader(INPUT.as_bytes());
             let mut buf = Vec::with_capacity(INPUT.len());
@@ -1098,7 +1098,7 @@ mod comics {
         }
 
         #[test]
-        #[ignore]
+
         fn reader_roundtrip() {
             let xs = Xorcism::new(KEY);
             let reader1 = xs.clone().reader(INPUT.as_bytes());
@@ -1110,7 +1110,7 @@ mod comics {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_munges() {
             let mut writer_dest = Vec::new();
             {
@@ -1121,7 +1121,7 @@ mod comics {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_roundtrip() {
             let mut writer_dest = Vec::new();
             let xs = Xorcism::new(KEY);
@@ -1151,7 +1151,7 @@ mod mad_science {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             // we transform the input into a `Vec<u8>` despite its presence in this
             // module because of the more restricted syntax that this function accepts
@@ -1172,7 +1172,7 @@ mod mad_science {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let mut xorcism = Xorcism::new(KEY);
             let result: Vec<u8> = xorcism.munge(INPUT.as_bytes()).collect();
@@ -1182,7 +1182,7 @@ mod mad_science {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let mut xorcism1 = Xorcism::new(KEY);
             let mut xorcism2 = xorcism1.clone();
@@ -1197,7 +1197,7 @@ mod mad_science {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let key = KEY.as_bytes();
 
@@ -1220,7 +1220,7 @@ mod mad_science {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -1233,7 +1233,7 @@ mod mad_science {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -1251,7 +1251,7 @@ mod mad_science {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let mut input = INPUT.as_bytes().to_vec();
             let original = input.clone();
@@ -1270,7 +1270,7 @@ mod mad_science {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -1282,7 +1282,7 @@ mod mad_science {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -1299,7 +1299,7 @@ mod mad_science {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn reader_munges() {
             let mut reader = Xorcism::new(KEY).reader(INPUT.as_bytes());
             let mut buf = Vec::with_capacity(INPUT.len());
@@ -1309,7 +1309,7 @@ mod mad_science {
         }
 
         #[test]
-        #[ignore]
+
         fn reader_roundtrip() {
             let xs = Xorcism::new(KEY);
             let reader1 = xs.clone().reader(INPUT.as_bytes());
@@ -1321,7 +1321,7 @@ mod mad_science {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_munges() {
             let mut writer_dest = Vec::new();
             {
@@ -1332,7 +1332,7 @@ mod mad_science {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_roundtrip() {
             let mut writer_dest = Vec::new();
             let xs = Xorcism::new(KEY);
@@ -1363,7 +1363,7 @@ mod metaphor {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             // we transform the input into a `Vec<u8>` despite its presence in this
             // module because of the more restricted syntax that this function accepts
@@ -1384,7 +1384,7 @@ mod metaphor {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let mut xorcism = Xorcism::new(KEY);
             let result: Vec<u8> = xorcism.munge(INPUT.as_bytes()).collect();
@@ -1394,7 +1394,7 @@ mod metaphor {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let mut xorcism1 = Xorcism::new(KEY);
             let mut xorcism2 = xorcism1.clone();
@@ -1409,7 +1409,7 @@ mod metaphor {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let key = KEY.as_bytes();
 
@@ -1432,7 +1432,7 @@ mod metaphor {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -1445,7 +1445,7 @@ mod metaphor {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -1463,7 +1463,7 @@ mod metaphor {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let mut input = INPUT.as_bytes().to_vec();
             let original = input.clone();
@@ -1482,7 +1482,7 @@ mod metaphor {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -1494,7 +1494,7 @@ mod metaphor {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -1511,7 +1511,7 @@ mod metaphor {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn reader_munges() {
             let mut reader = Xorcism::new(KEY).reader(INPUT.as_bytes());
             let mut buf = Vec::with_capacity(INPUT.len());
@@ -1521,7 +1521,7 @@ mod metaphor {
         }
 
         #[test]
-        #[ignore]
+
         fn reader_roundtrip() {
             let xs = Xorcism::new(KEY);
             let reader1 = xs.clone().reader(INPUT.as_bytes());
@@ -1533,7 +1533,7 @@ mod metaphor {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_munges() {
             let mut writer_dest = Vec::new();
             {
@@ -1544,7 +1544,7 @@ mod metaphor {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_roundtrip() {
             let mut writer_dest = Vec::new();
             let xs = Xorcism::new(KEY);
@@ -1574,7 +1574,7 @@ mod emoji {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             // we transform the input into a `Vec<u8>` despite its presence in this
             // module because of the more restricted syntax that this function accepts
@@ -1595,7 +1595,7 @@ mod emoji {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let mut xorcism = Xorcism::new(KEY);
             let result: Vec<u8> = xorcism.munge(INPUT.as_bytes()).collect();
@@ -1605,7 +1605,7 @@ mod emoji {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let mut xorcism1 = Xorcism::new(KEY);
             let mut xorcism2 = xorcism1.clone();
@@ -1620,7 +1620,7 @@ mod emoji {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let key = KEY.as_bytes();
 
@@ -1643,7 +1643,7 @@ mod emoji {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -1656,7 +1656,7 @@ mod emoji {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let key = KEY.as_bytes();
             let input = INPUT.as_bytes();
@@ -1674,7 +1674,7 @@ mod emoji {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn munge_in_place() {
             let mut input = INPUT.as_bytes().to_vec();
             let original = input.clone();
@@ -1693,7 +1693,7 @@ mod emoji {
         }
 
         #[test]
-        #[ignore]
+
         fn munges() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -1705,7 +1705,7 @@ mod emoji {
         }
 
         #[test]
-        #[ignore]
+
         fn round_trip() {
             let owned_input = INPUT.as_bytes().to_vec();
 
@@ -1722,7 +1722,7 @@ mod emoji {
         use super::*;
 
         #[test]
-        #[ignore]
+
         fn reader_munges() {
             let mut reader = Xorcism::new(KEY).reader(INPUT.as_bytes());
             let mut buf = Vec::with_capacity(INPUT.len());
@@ -1732,7 +1732,7 @@ mod emoji {
         }
 
         #[test]
-        #[ignore]
+
         fn reader_roundtrip() {
             let xs = Xorcism::new(KEY);
             let reader1 = xs.clone().reader(INPUT.as_bytes());
@@ -1744,7 +1744,7 @@ mod emoji {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_munges() {
             let mut writer_dest = Vec::new();
             {
@@ -1755,7 +1755,7 @@ mod emoji {
         }
 
         #[test]
-        #[ignore]
+
         fn writer_roundtrip() {
             let mut writer_dest = Vec::new();
             let xs = Xorcism::new(KEY);
