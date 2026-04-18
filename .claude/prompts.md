@@ -15,13 +15,14 @@
 1. Navigate to exercise directory
 2. Analyze README.md and test requirements
 3. Implement solution in src/lib.rs
-4. Remove #[ignore] from all tests
-5. Run cargo test iteratively until all pass
-6. Run cargo fmt --all
-7. Run cargo clippy -- -W clippy::pedantic
-8. Add documentation comments
-9. Verify with cargo test --release
-10. Final tests with cargo test && cargo fmt --all -- --check && cargo clippy -- -W clippy::pedantic"
+4. Improve the solution in src/lib.rs
+5. Remove #[ignore] from all tests
+6. Run cargo test iteratively until all pass
+7. Run cargo fmt --all
+8. Run cargo clippy -- -W clippy::pedantic
+9. Add documentation comments
+10. Verify with cargo test --release
+11. Final tests with cargo test && cargo fmt --all -- --check && cargo clippy -- -W clippy::pedantic"
 
 ### Quick Implementation
 "Quickly solve [EXERCISE]:
