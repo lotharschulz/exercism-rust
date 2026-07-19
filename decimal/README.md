@@ -41,3 +41,9 @@ It would be very easy to implement this exercise by using the [bigdecimal](https
 ### Based on
 
 Peter Goodspeed-Niklaus
+
+### Verification
+
+```sh
+cargo test --manifest-path Cargo.toml && cargo fmt --all -- --check && cargo clippy
+```
