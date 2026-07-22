@@ -20,6 +20,8 @@ cd "${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}" || exit 1
 # Fingerprint everything verify.sh depends on: source tree (tracked + untracked,
 # content-hashed), manifests, and the script itself. Identical fingerprint to
 # the last green run -> identical verdict -> safe to skip.
+# The fingerprint omits Cargo.lock so a dependency bump wouldn't invalidate the cache. 
+# Thats fine for an exercism crate, you may adapt this to your own needs.
 compute_fingerprint() {
   {
     rustc --version
