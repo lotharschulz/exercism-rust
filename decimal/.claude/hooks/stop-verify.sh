@@ -21,7 +21,8 @@ cd "${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}" || exit 1
 # content-hashed), manifests, and the script itself. Identical fingerprint to
 # the last green run -> identical verdict -> safe to skip.
 # The fingerprint omits Cargo.lock so a dependency bump wouldn't invalidate the cache. 
-# Thats fine for an exercism crate, you may adapt this to your own needs.
+# That's fine for an exercism crate, you may adapt this to your own needs.
+# shasum -a 256 below is macOS. Linux users may use sha256sum.
 compute_fingerprint() {
   {
     rustc --version
