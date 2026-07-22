@@ -9,7 +9,7 @@ cargo fmt --all -- --check
 
 echo ""
 echo "[2/3] Compilation & Linting (cargo clippy)..."
-cargo clippy -- -W clippy::pedantic
+cargo clippy -- -D warnings
 
 
 echo ""
